@@ -6,9 +6,11 @@
 
   <body>
 
+  <!-- Top menu - header_menu start -->
   <?php
   require_once("includes/header_menu.php");
   ?>
+  <!-- Top menu - header_menu end -->
 
 
 
@@ -20,10 +22,8 @@
 
 
 
-    <div class="container">
+    <div class="container"> <!-- Container 1 start -->
       
-    
-    
     <div class="card-deck mb-3 text-center">
         <div class="card mb-3 box-shadow">
           <div class="card-header">
@@ -78,7 +78,7 @@
       </div> <!-- Container 1 end -->
 
 
-      <div class="container">
+      <div class="container"> <!-- Container 2 start -->
       
     
     
@@ -156,7 +156,7 @@
             </div>
           </div>
   
-        </div> <!-- Container 1 end -->
+        </div> <!-- Container 2 end -->
 
         <?php
             require_once("includes/footer.php");
@@ -165,9 +165,11 @@
     </div>
 
 
+    <!-- Libraries start -->
     <?php
             require_once("includes/lib.php");
     ?>
+     <!-- Libraries end -->
 
 
 
