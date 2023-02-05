@@ -1,7 +1,7 @@
       <footer class="pt-4 my-md-5 pt-md-5 border-top">
         <div class="row">
           <div class="col-12 col-md">
-            <img class="mb-2" src="img/sgb_logo.png" alt="" width="130" >
+          <a class="my-0 mr-md-auto" href="index.php"><img class="mb-2" src="img/sgb_logo.png" alt="" width="130" ></a>
             <small class="d-block mb-3 text-muted">&copy; 2023</small>
           </div>
         <!--  <div class="col-6 col-md">

@@ -15,7 +15,7 @@
 
 
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-      <h2 style='font-weight:600; color:#228B22; '">#1 PLASTENIK</h2>
+      <h2 style='font-weight:600; color:#228B22; '"><i class="fa-solid fa-seedling"></i> #1 PLASTENIK</h2>
       <p class="lead">Aktuelni podaci</p>
     </div>
 
@@ -27,7 +27,7 @@
     <div class="card-deck mb-3 text-center">
         <div class="card mb-3 box-shadow">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Trenutni prosjek</i></h4>
+            <h4 class="my-0 font-weight-normal"><i class="fa-solid fa-gauge"></i> Trenutni prosjek</i></h4>
           </div>
           <div class="card-body">
           <ul class="list-unstyled mt-3 mb-1">
@@ -50,7 +50,7 @@
         </div>
         <div class="card mb-3 box-shadow">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal">Vanjski uslovi</h4>
+            <h4 class="my-0 font-weight-normal"><i class="fa-solid fa-cloud-sun-rain"></i> Vanjski uslovi</h4>
           </div>
           <div class="card-body">
           <ul class="list-unstyled mt-3 mb-1">
@@ -85,7 +85,7 @@
       <div class="card-deck mb-3 text-center">
           <div class="card mb-3 box-shadow">
             <div class="card-header">
-              <h4 class="my-0 font-weight-normal">Senzor T1</h4>
+              <h4 class="my-0 font-weight-normal"><i class="fa-solid fa-microchip"></i> Senzor T1</h4>
             </div>
             <div class="card-body">
             <ul class="list-unstyled mt-3 mb-1">
@@ -110,7 +110,7 @@
 
           <div class="card mb-3 box-shadow">
             <div class="card-header">
-              <h4 class="my-0 font-weight-normal">Senzor T2</h4>
+              <h4 class="my-0 font-weight-normal"><i class="fa-solid fa-microchip"></i> Senzor T2</h4>
             </div>
             <div class="card-body">
             <ul class="list-unstyled mt-3 mb-1">
@@ -134,7 +134,7 @@
           
           <div class="card mb-3 box-shadow">
             <div class="card-header">
-              <h4 class="my-0 font-weight-normal">Senzor T3</h4>
+              <h4 class="my-0 font-weight-normal"><i class="fa-solid fa-microchip"></i> Senzor T3</h4>
             </div>
             <div class="card-body">
             <ul class="list-unstyled mt-3 mb-1">
