@@ -25,16 +25,11 @@
    
 
 
+    <?php
+            require_once("includes/footer.php");
+    ?>
 
 
-    <footer class="pt-4 my-md-5 pt-md-5 border-top">
-        <div class="row">
-          <div class="col-12 col-md">
-            <img class="mb-2" src="img/logo.png" alt="" width="130" >
-            <small class="d-block mb-3 text-muted">&copy; 2023</small>
-          </div>
-        </div>
-    </footer>
 
     </div> <!-- Container 1 end -->
 
