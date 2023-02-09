@@ -103,7 +103,7 @@
               <ul class="list-unstyled mt-3 mb-1">
               <li>Podaci od prije 1 minut i 27 sekundi </li>
             </ul>  
-              <button type="button" class="btn btn-lg btn-block btn-outline-primary">Detaljnije</button>
+            <a class="btn btn-lg btn-block btn-outline-primary" href="wTH1.php" role="button">Detaljnije</a>
             </div>
           </div>
 
@@ -128,7 +128,7 @@
               <ul class="list-unstyled mt-3 mb-1">
               <li>Podaci od prije 1 minut i 27 sekundi </li>
             </ul>  
-              <button type="button" class="btn btn-lg btn-block btn-outline-primary">Detaljnije</button>
+            <a class="btn btn-lg btn-block btn-outline-primary" href="wTH1.php" role="button">Detaljnije</a>
             </div>
           </div>
           
@@ -152,7 +152,7 @@
               <ul class="list-unstyled mt-3 mb-1">
               <li>Podaci od prije 1 minut i 27 sekundi </li>
             </ul>  
-              <button type="button" class="btn btn-lg btn-block btn-outline-primary">Detaljnije</button>
+            <a class="btn btn-lg btn-block btn-outline-primary" href="wTH1.php" role="button">Detaljnije</a>
             </div>
           </div>
   
