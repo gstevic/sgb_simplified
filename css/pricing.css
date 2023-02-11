@@ -23,3 +23,13 @@ html {
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
 
 .box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+.temp_color { color:#E86144; }
+
+.temp_title { color:#CFA39A; }
+
+.hum_color { color:#0096FF; }
+
+.hum_title { color:#89CFF0; }
+
+.sub_text { color:#ccc; }

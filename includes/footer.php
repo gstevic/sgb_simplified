@@ -36,3 +36,8 @@
           -->
         </div>
       </footer>
+
+      <?php
+    //----->Include db disconnect
+        require('inc_disc.php');
+    ?>
