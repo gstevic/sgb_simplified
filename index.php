@@ -13,23 +13,8 @@
   <!-- Top menu - header_menu end -->
 
 <?php
-/*
-$current_temp_t1;
-$current_temp_t2;
-$current_temp_t3;
 
-$current_hum_t1;
-$current_hum_t2;
-$current_hum_t3;
-
-$current_time_t1;
-$current_time_t2;
-$current_time_t3;
-
-$current_min_temp; 
-*/
-
-
+//********************************************* GET SENSOR DATA START *************************** */
 //GET Data for T1 sensor start
 $sql_t1 = "SELECT sensor, temperature, humidity, created_at from readings where sensor = 't1' order by created_at desc limit 1";
 
@@ -85,9 +70,10 @@ if (mysqli_query($conn, $sql_t3)) {
 }
 }
 //GET Data for T3 sensor end
+//********************************************* GET SENSOR DATA END *************************** */
 
 
-
+//********************************************* GET MIN/MAX MEASURMENTS FOR THE CURRENT DATE START *************************** */
 //GET min temp start
 $sql_min_temp = "SELECT sensor, temperature, humidity, created_at from readings where temperature = (SELECT MIN(temperature) FROM readings where DATE(created_at) = DATE(now())) and DATE(created_at)=DATE(now()) order by created_at limit 1";
 
@@ -170,12 +156,16 @@ if (mysqli_query($conn, $sql_max_hum)) {
 }
 }
 //GET max hum end
+//********************************************* GET MIN/MAX MEASURMENTS FOR THE CURRENT DATE END *************************** */
 
 
+//********************************************* CALCULATE AVARAGE VALUES START *************************** */
 // Calculate the avarage temperature and humidity start
 $current_avg_temp = ($current_temp_t1+$current_temp_t2+$current_temp_t3)/3;
 $current_avg_hum = ($current_hum_t1+$current_hum_t2+$current_hum_t3)/3;
 // Calculate the avarage temperature and humidity end
+//********************************************* CALCULATE AVARAGE VALUES END *************************** */
+
 
 
 ?>
