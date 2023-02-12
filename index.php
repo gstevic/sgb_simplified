@@ -13,7 +13,7 @@
   <!-- Top menu - header_menu end -->
 
 <?php
-
+/*
 $current_temp_t1;
 $current_temp_t2;
 $current_temp_t3;
@@ -27,7 +27,7 @@ $current_time_t2;
 $current_time_t3;
 
 $current_min_temp; 
-
+*/
 
 
 //GET Data for T1 sensor start
@@ -62,7 +62,7 @@ if (mysqli_query($conn, $sql_t2)) {
     $current_time_t2 = $row["created_at"];
   }
 } else {
-  echo "0 results";
+  //echo "0 results";
 }
 }
 //GET Data for T2 sensor end
@@ -81,7 +81,7 @@ if (mysqli_query($conn, $sql_t3)) {
     $current_time_t3 = $row["created_at"];
   }
 } else {
-  echo "0 results";
+  //echo "0 results";
 }
 }
 //GET Data for T3 sensor end
@@ -101,7 +101,9 @@ if (mysqli_query($conn, $sql_min_temp)) {
     $current_min_temp_sensor = $row["sensor"];
   }
 } else {
-  echo "0 results";
+  $current_min_temp = '-';
+  $current_min_temp_time = '-';
+  $current_min_temp_sensor = '-';
 }
 }
 //GET min temp end
@@ -120,7 +122,9 @@ if (mysqli_query($conn, $sql_min_hum)) {
     $current_min_hum_sensor = $row["sensor"];
   }
 } else {
-  echo "0 results";
+    $current_min_hum = '-';
+    $current_min_hum_time = '-';
+    $current_min_hum_sensor = '-';
 }
 }
 //GET min hum end
@@ -139,7 +143,9 @@ if (mysqli_query($conn, $sql_max_temp)) {
     $current_max_temp_sensor = $row["sensor"];
   }
 } else {
-  echo "0 results";
+  $current_max_temp = '-';
+  $current_max_temp_time = '-';
+  $current_max_temp_sensor = '-';
 }
 }
 //GET max temp end
@@ -158,7 +164,9 @@ if (mysqli_query($conn, $sql_max_hum)) {
     $current_max_hum_sensor = $row["sensor"];
   }
 } else {
-  echo "0 results";
+  $current_max_hum = '-';
+    $current_max_hum_time = '-';
+    $current_max_hum_sensor = '-';
 }
 }
 //GET max hum end
