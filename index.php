@@ -1,10 +1,10 @@
 <?php
   require_once("includes/head.php");
 ?>
-    <title>SGB</title>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js" integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <title>SGB</title>
   </head>
 
-  <body>
+  <body onload="">
 
   <!-- Top menu - header_menu start -->
   <?php
@@ -12,166 +12,7 @@
   ?>
   <!-- Top menu - header_menu end -->
 
-<?php
-
-//********************************************* GET SENSOR DATA START *************************** */
-//GET Data for T1 sensor start
-$sql_t1 = "SELECT sensor, temperature, humidity, created_at from readings where sensor = 't1' order by created_at desc limit 1";
-
-if (mysqli_query($conn, $sql_t1)) {
- $result = $conn->query($sql_t1);
- if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    $current_temp_t1 = $row["temperature"];
-    $current_hum_t1 = $row["humidity"];
-    $current_time_t1 = $row["created_at"];
-  }
-} else {
-  echo "0 results";
-}
-}
-//GET Data for T1 sensor end
-
-
-//GET Data for T2 sensor start
-$sql_t2 = "SELECT sensor, temperature, humidity, created_at from readings where sensor = 't2' order by created_at desc limit 1";
-
-if (mysqli_query($conn, $sql_t2)) {
- $result = $conn->query($sql_t2);
- if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    $current_temp_t2 = $row["temperature"];
-    $current_hum_t2 = $row["humidity"];
-    $current_time_t2 = $row["created_at"];
-  }
-} else {
-  //echo "0 results";
-}
-}
-//GET Data for T2 sensor end
-
-
-//GET Data for T3 sensor start
-$sql_t3 = "SELECT sensor, temperature, humidity, created_at from readings where sensor = 't3' order by created_at desc limit 1";
-
-if (mysqli_query($conn, $sql_t3)) {
- $result = $conn->query($sql_t3);
- if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    $current_temp_t3 = $row["temperature"];
-    $current_hum_t3 = $row["humidity"];
-    $current_time_t3 = $row["created_at"];
-  }
-} else {
-  //echo "0 results";
-}
-}
-//GET Data for T3 sensor end
-//********************************************* GET SENSOR DATA END *************************** */
-
-
-//********************************************* GET MIN/MAX MEASURMENTS FOR THE CURRENT DATE START *************************** */
-//GET min temp start
-$sql_min_temp = "SELECT sensor, temperature, humidity, created_at from readings where temperature = (SELECT MIN(temperature) FROM readings where DATE(created_at) = DATE(now())) and DATE(created_at)=DATE(now()) order by created_at limit 1";
-
-if (mysqli_query($conn, $sql_min_temp)) {
- $result = $conn->query($sql_min_temp);
- if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    $current_min_temp = $row["temperature"];
-    $current_min_temp_time = $row["created_at"];
-    $current_min_temp_sensor = $row["sensor"];
-  }
-} else {
-  $current_min_temp = '-';
-  $current_min_temp_time = '-';
-  $current_min_temp_sensor = '-';
-}
-}
-//GET min temp end
-
-
-//GET min hum start
-$sql_min_hum = "SELECT sensor, temperature, humidity, created_at from readings where humidity = (SELECT MIN(humidity) FROM readings where DATE(created_at) = DATE(now())) and DATE(created_at)=DATE(now()) order by created_at limit 1";
-
-if (mysqli_query($conn, $sql_min_hum)) {
- $result = $conn->query($sql_min_hum);
- if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    $current_min_hum = $row["humidity"];
-    $current_min_hum_time = $row["created_at"];
-    $current_min_hum_sensor = $row["sensor"];
-  }
-} else {
-    $current_min_hum = '-';
-    $current_min_hum_time = '-';
-    $current_min_hum_sensor = '-';
-}
-}
-//GET min hum end
-
-
-//GET max temp start
-$sql_max_temp = "SELECT sensor, temperature, humidity, created_at from readings where temperature = (SELECT MAX(temperature) FROM readings where DATE(created_at) = DATE(now())) and DATE(created_at)=DATE(now()) order by created_at limit 1";
-
-if (mysqli_query($conn, $sql_max_temp)) {
- $result = $conn->query($sql_max_temp);
- if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    $current_max_temp = $row["temperature"];
-    $current_max_temp_time = $row["created_at"];
-    $current_max_temp_sensor = $row["sensor"];
-  }
-} else {
-  $current_max_temp = '-';
-  $current_max_temp_time = '-';
-  $current_max_temp_sensor = '-';
-}
-}
-//GET max temp end
-
-
-//GET max hum start
-$sql_max_hum = "SELECT sensor, temperature, humidity, created_at from readings where humidity = (SELECT MAX(humidity) FROM readings where DATE(created_at) = DATE(now())) and DATE(created_at)=DATE(now()) order by created_at limit 1";
-
-if (mysqli_query($conn, $sql_max_hum)) {
- $result = $conn->query($sql_max_hum);
- if ($result->num_rows > 0) {
-  // output data of each row
-  while($row = $result->fetch_assoc()) {
-    $current_max_hum = $row["humidity"];
-    $current_max_hum_time = $row["created_at"];
-    $current_max_hum_sensor = $row["sensor"];
-  }
-} else {
-  $current_max_hum = '-';
-    $current_max_hum_time = '-';
-    $current_max_hum_sensor = '-';
-}
-}
-//GET max hum end
-//********************************************* GET MIN/MAX MEASURMENTS FOR THE CURRENT DATE END *************************** */
-
-
-//********************************************* CALCULATE AVARAGE VALUES START *************************** */
-// Calculate the avarage temperature and humidity start
-$current_avg_temp = ($current_temp_t1+$current_temp_t2+$current_temp_t3)/3;
-$current_avg_hum = ($current_hum_t1+$current_hum_t2+$current_hum_t3)/3;
-// Calculate the avarage temperature and humidity end
-//********************************************* CALCULATE AVARAGE VALUES END *************************** */
-
-
-
-?>
-
-
-
+  
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
       <h2 style='font-weight:600; color:#228B22; '"><i class="fa-solid fa-seedling"></i> #1 PLASTENIK</h2>
       <p class="lead">Aktuelni podaci</p>
@@ -193,13 +34,13 @@ $current_avg_hum = ($current_hum_t1+$current_hum_t2+$current_hum_t3)/3;
           </ul>
             <h1 class="card-title pricing-card-title temp_color">         
             <i class="fa-solid fa-temperature-three-quarters"></i>
-            <?php echo round($current_avg_temp,1); ?>°C</h1>
+            <span id="current_avg_temp"></span> °C</h1>
           <ul class="list-unstyled mt-3 mb-1 hum_title">
             <li>VLAŽNOST</li>
           </ul>  
             <h1 class="card-title pricing-card-title hum_color">
                 <i class="fa-solid fa-droplet"></i>
-                <?php echo round($current_avg_hum,1); ?>%</h1>
+                <span id="current_avg_hum"></span>%</h1>
             <ul class="list-unstyled mt-3 mb-1">
             <li class="sub_text">Podaci od prije 1 min i 27 sek </li>
           </ul>  
@@ -212,29 +53,29 @@ $current_avg_hum = ($current_hum_t1+$current_hum_t2+$current_hum_t3)/3;
           </div>
           <div class="card-body">
           <ul class="list-unstyled mt-3 mb-1 temp_title">
-            <li>Min. Temperatura u <?php echo date('H:i:s',strtotime($current_min_temp_time)); ?> na <?php echo $current_min_temp_sensor; ?></li>
+            <li>Min. Temperatura u <span id="current_min_temp_time"></span> na <span id="current_min_temp_sensor"></span></li>
           </ul>
           <h4 class="card-title pricing-card-title temp_color">         
             <i class="fa-solid fa-temperature-three-quarters"></i>
-            <?php echo round($current_min_temp,1); ?>°C</h4>
+            <span id="current_min_temp"></span>°C</h4>
           <ul class="list-unstyled mt-3 mb-1 hum_title">
-            <li>Min. vlažnost u <?php echo date('H:i:s',strtotime($current_min_hum_time)); ?> na <?php echo $current_min_hum_sensor; ?></li>
+            <li>Min. vlažnost u <span id="current_min_hum_time"></span> na <span id="current_min_hum_sensor"></span></li>
           </ul>  
           <h4 class="card-title pricing-card-title hum_color">
                 <i class="fa-solid fa-droplet"></i>
-                <?php echo round($current_min_hum,1); ?>%</h4>
+                <span id="current_min_hum"></span>%</h4>
                 <ul class="list-unstyled mt-3 mb-1 temp_title">
-            <li>Maks. Temperatura u <?php echo date('H:i:s',strtotime($current_max_temp_time)); ?> na <?php echo $current_max_temp_sensor; ?></li>
+            <li>Maks. Temperatura u <span id="current_max_temp_time"></span> na <span id="current_max_temp_sensor"></span></li>
           </ul>
           <h4 class="card-title pricing-card-title temp_color">         
             <i class="fa-solid fa-temperature-three-quarters"></i>
-            <?php echo round($current_max_temp,1); ?>°C</h4>
+            <span id="current_max_temp"></span>°C</h4>
           <ul class="list-unstyled mt-3 mb-1 hum_title">
-            <li>Maks. vlažnost u <?php echo date('H:i:s',strtotime($current_max_hum_time)); ?> na <?php echo $current_max_hum_sensor; ?></li>
+            <li>Maks. vlažnost u <span id="current_max_hum_time"></span> na <span id="current_max_hum_sensor"></span></li>
           </ul>  
           <h4 class="card-title pricing-card-title hum_color">
                 <i class="fa-solid fa-droplet"></i>
-                <?php echo round($current_max_hum,1); ?>%</h4>
+                <span id="current_max_hum"></span>%</h4>
           </div>
         </div>
         
@@ -256,13 +97,13 @@ $current_avg_hum = ($current_hum_t1+$current_hum_t2+$current_hum_t3)/3;
             <ul class="list-unstyled mt-3 mb-1 temp_title">
               <li>TEMPERATURA</li>
             </ul>
-            <h1 class="card-title pricing-card-title temp_color"><i class="fa-solid fa-temperature-arrow-up"></i> <?php echo $current_temp_t1; ?>°C</h1>
+            <h1 class="card-title pricing-card-title temp_color"><i class="fa-solid fa-temperature-arrow-up"></i> <span id="t1_temp"></span>°C</h1>
             <ul class="list-unstyled mt-3 mb-1 hum_title">
               <li>VLAŽNOST</li>
             </ul>  
-            <h1 class="card-title pricing-card-title hum_color"><i class="fa-solid fa-droplet"></i> <?php echo $current_hum_t1; ?>%</h1>
+            <h1 class="card-title pricing-card-title hum_color"><i class="fa-solid fa-droplet"></i> <span id="t1_hum"></span>%</h1>
               <ul class="list-unstyled mt-3 mb-1">
-              <li class="sub_text">Podaci od prije 1 minut i 27 sekundi </li>
+              <li class="sub_text">Podaci od prije <span id="t1_time"></span> </li>
             </ul>  
             <a class="btn btn-lg btn-block btn-outline-primary" href="wTH1.php" role="button">Detaljnije</a>
             </div>
@@ -278,13 +119,13 @@ $current_avg_hum = ($current_hum_t1+$current_hum_t2+$current_hum_t3)/3;
               <li>TEMPERATURA (+1.6°C)</li>
             </ul>
               <h1 class="card-title pricing-card-title temp_color">         
-              <i class="fa-solid fa-temperature-arrow-up"></i> <?php echo $current_temp_t2; ?>°C</h1>
+              <i class="fa-solid fa-temperature-arrow-up"></i> <span id="t2_temp"></span>°C</h1>
             <ul class="list-unstyled mt-3 mb-1 hum_title">
               <li>VLAŽNOST (-4%)</li>
             </ul>  
-              <h1 class="card-title pricing-card-title hum_color"><i class="fa-solid fa-droplet"></i> <?php echo $current_hum_t2; ?>%</h1>
+              <h1 class="card-title pricing-card-title hum_color"><i class="fa-solid fa-droplet"></i> <span id="t2_hum"></span>%</h1>
               <ul class="list-unstyled mt-3 mb-1">
-              <li class="sub_text" >Podaci od prije 1 minut i 27 sekundi </li>
+              <li class="sub_text" >Podaci od prije <span id="t2_time"></span> </li>
             </ul>  
             <a class="btn btn-lg btn-block btn-outline-primary" href="wTH1.php" role="button">Detaljnije</a>
             </div>
@@ -298,13 +139,13 @@ $current_avg_hum = ($current_hum_t1+$current_hum_t2+$current_hum_t3)/3;
             <ul class="list-unstyled mt-3 mb-1 temp_title">
               <li>TEMPERATURA</li>
             </ul>
-              <h1 class="card-title pricing-card-title temp_color"><i class="fa-solid fa-temperature-arrow-up"></i> <?php echo $current_temp_t3; ?>°C</h1>
+              <h1 class="card-title pricing-card-title temp_color"><i class="fa-solid fa-temperature-arrow-up"></i> <span id="t3_temp"></span>°C</h1>
             <ul class="list-unstyled mt-3 mb-1 hum_title">
               <li>VLAŽNOST</li>
             </ul>  
-              <h1 class="card-title pricing-card-title hum_color"><i class="fa-solid fa-droplet"></i> <?php echo $current_hum_t3; ?>%</h1>
+              <h1 class="card-title pricing-card-title hum_color"><i class="fa-solid fa-droplet"></i> <span id="t3_hum"></span>%</h1>
               <ul class="list-unstyled mt-3 mb-1">
-              <li class="sub_text">Podaci od prije 1 minut i 27 sekundi </li>
+              <li class="sub_text">Podaci od prije <span id="t3_time"></span> </li>
             </ul>  
             <a class="btn btn-lg btn-block btn-outline-primary" href="wTH1.php" role="button">Detaljnije</a>
             </div>
@@ -321,10 +162,112 @@ $current_avg_hum = ($current_hum_t1+$current_hum_t2+$current_hum_t3)/3;
 
     <!-- Libraries start -->
     <?php
-            require_once("includes/lib.php");
+          //  require_once("includes/lib.php");
     ?>
      <!-- Libraries end -->
 
+
+     <script>
+    $.ajax({
+      type: "POST",
+      url: "get_data.php",
+      data: { values: ["2.1", "4.3", "1.9"] },
+      success: function(data) {
+        //console.log("The data was successfully sent and received by the PHP script.");
+        console.log("Response: " + data);
+        //document.getElementById("value1").innerHTML = data;
+        const myArray = data.split(", ");
+        //t1 current data set
+        $t1_temp = parseFloat(myArray[0]).toFixed(1);
+        $t1_hum = parseFloat(myArray[1]).toFixed(1);
+        document.getElementById("t1_temp").innerHTML = $t1_temp;
+        document.getElementById("t1_hum").innerHTML = $t1_hum;
+        document.getElementById("t1_time").innerHTML = myArray[2];
+        //t2 current data set
+        $t2_temp = parseFloat(myArray[3]).toFixed(1);
+        $t2_hum = parseFloat(myArray[4]).toFixed(1);
+        document.getElementById("t2_temp").innerHTML = $t2_temp;
+        document.getElementById("t2_hum").innerHTML = $t2_hum;
+        document.getElementById("t2_time").innerHTML = myArray[5];
+        //t3 current data set
+        $t3_temp = parseFloat(myArray[6]).toFixed(1);
+        $t3_hum = parseFloat(myArray[7]).toFixed(1);
+        document.getElementById("t3_temp").innerHTML =  $t3_temp;
+        document.getElementById("t3_hum").innerHTML = $t3_hum;
+        document.getElementById("t3_time").innerHTML = myArray[8];
+        //Min Temp values data set
+        if(isNaN(myArray[9])){
+          $min_temp = '-';
+          $min_temp_sensor = '-';
+          $min_temp_time = '-';
+        }
+        else{
+          $min_temp = parseFloat(myArray[9]).toFixed(1);
+          $min_temp_sensor = myArray[10];
+          $min_temp_time = myArray[11];
+        }
+        document.getElementById("current_min_temp").innerHTML =  $min_temp;
+        document.getElementById("current_min_temp_sensor").innerHTML = $min_temp_sensor;
+        document.getElementById("current_min_temp_time").innerHTML = $min_temp_time;
+         //Max Temp values data set
+         if(isNaN(myArray[9])){
+          $max_temp = '-';
+          $max_temp_sensor = '-';
+          $max_temp_time = '-';
+        }
+        else{
+          $max_temp = parseFloat(myArray[12]).toFixed(1);
+          $max_temp_sensor = myArray[13];
+          $max_temp_time = myArray[14];
+        }
+        document.getElementById("current_max_temp").innerHTML =  $max_temp;
+        document.getElementById("current_max_temp_sensor").innerHTML = $max_temp_sensor;
+        document.getElementById("current_max_temp_time").innerHTML = $max_temp_time;
+        //Min Hum values data set
+        if(isNaN(myArray[9])){
+          $min_hum = '-';
+          $min_hum_sensor = '-';
+          $min_hum_time = '-';
+        }
+        else{
+          $min_hum = parseFloat(myArray[15]).toFixed(1);
+          $min_hum_sensor = myArray[16];
+          $min_hum_time = myArray[17];
+        }
+        document.getElementById("current_min_hum").innerHTML =  $min_hum;
+        document.getElementById("current_min_hum_sensor").innerHTML = $min_hum_sensor;
+        document.getElementById("current_min_hum_time").innerHTML = $min_hum_time;
+        //Max Hum values data set
+        if(isNaN(myArray[9])){
+          $max_hum = '-';
+          $max_hum_sensor = '-';
+          $max_hum_time = '-';
+        }
+        else{
+          $max_hum = parseFloat(myArray[18]).toFixed(1);
+          $max_hum_sensor = myArray[19];
+          $max_hum_time = myArray[20];
+        }
+        document.getElementById("current_max_hum").innerHTML =  $max_hum;
+        document.getElementById("current_max_hum_sensor").innerHTML = $max_hum_sensor;
+        document.getElementById("current_max_hum_time").innerHTML = $max_hum_time;
+
+        //current avg temp - calculation
+        $current_avg_temp = ((parseFloat(myArray[0])+parseFloat(myArray[3])+parseFloat(myArray[6]))/3).toFixed(2);
+        $current_avg_hum = ((parseFloat(myArray[1])+parseFloat(myArray[4])+parseFloat(myArray[7]))/3).toFixed(2);
+        //current avg temp/hum set
+        document.getElementById("current_avg_temp").innerHTML = $current_avg_temp;
+        document.getElementById("current_avg_hum").innerHTML = $current_avg_hum;
+
+        
+        
+        //document.getElementById("t3_time").innerHTML = myArray[8];
+
+
+        
+  }
+    });
+    </script>
 
 
   </body>
