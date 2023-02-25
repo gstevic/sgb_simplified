@@ -1,9 +1,4 @@
 <?php
- /*   $values = $_POST['values'];
-    $values2 = [1, 1.1, 4.3, 1.9, "14.02.2023 15:23"];
-    echo implode(", ", $values2);
- */
-
 require('includes/inc_conn.php');
 //********************************************* GET SENSOR DATA START *************************** */
 //GET Data for T1 sensor start
@@ -152,8 +147,14 @@ if (mysqli_query($conn, $sql_max_hum)) {
 //********************************************* GET MIN/MAX MEASURMENTS FOR THE CURRENT DATE END *************************** */
 
 
-$t_data = [$current_temp_t1, $current_hum_t1, $current_time_t1, $current_temp_t2, $current_hum_t2, $current_time_t2, $current_temp_t3, $current_hum_t3, $current_time_t3, $current_min_temp, $current_min_temp_time, $current_min_temp_sensor, $current_max_temp, $current_max_temp_time, $current_max_temp_sensor ,$current_min_hum, $current_min_hum_time, $current_min_hum_sensor, $current_max_hum, $current_max_hum_time, $current_max_hum_sensor];
+$t_data = [$current_temp_t1, $current_hum_t1, $current_time_t1, 
+$current_temp_t2, $current_hum_t2, $current_time_t2, 
+$current_temp_t3, $current_hum_t3, $current_time_t3, 
+$current_min_temp, $current_min_temp_time, $current_min_temp_sensor, 
+$current_max_temp, $current_max_temp_time, $current_max_temp_sensor , 
+$current_min_hum, $current_min_hum_time, $current_min_hum_sensor, 
+$current_max_hum, $current_max_hum_time, $current_max_hum_sensor];
 echo implode(", ", $t_data);
-
+require('includes/inc_disc.php');
 ?>
 
