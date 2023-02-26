@@ -31,13 +31,11 @@
           </div>
           <div class="card-body">
           <ul class="list-unstyled mt-3 mb-1 temp_title">
-            <li>TEMPERATURA</li>
+            <li>TEMPERATURA (<span id="avg_temp_diffrence"></span>°C)</li>
           </ul>
-            <h1 class="card-title pricing-card-title temp_color">         
-            <i class="fa-solid fa-temperature-three-quarters"></i>
-            <span id="current_avg_temp"></span> °C</h1>
-          <ul class="list-unstyled mt-3 mb-1 hum_title">
-            <li>VLAŽNOST</li>
+            <h1 class="card-title pricing-card-title temp_color" id="current_avg_temp"></h1>
+          <ul class="list-unstyled mt-3 mb-1 hum_title" >
+            <li>VLAŽNOST (<span id="avg_hum_diffrence"></span>%)</li>
           </ul>  
             <h1 class="card-title pricing-card-title hum_color">
                 <i class="fa-solid fa-droplet"></i>
@@ -45,7 +43,7 @@
             <ul class="list-unstyled mt-3 mb-1">
             <!-- <li class="sub_text">Podaci od prije 1 min i 27 sek </li> -->
           </ul>  
-            <a class="btn btn-lg btn-block btn-outline-primary" href="sub-page.php" role="button">Detaljnije</a>
+            <!-- <a class="btn btn-lg btn-block btn-outline-primary" href="sub-page.php" role="button">Detaljnije</a> -->
           </div>
         </div>
         <div class="card mb-3 box-shadow">
@@ -57,7 +55,7 @@
             <li>Min. Temperatura u <span id="current_min_temp_time"></span> na <span id="current_min_temp_sensor"></span></li>
           </ul>
           <h4 class="card-title pricing-card-title temp_color">         
-            <i class="fa-solid fa-temperature-three-quarters"></i>
+          <i class="fa-solid fa-temperature-arrow-down"></i>
             <span id="current_min_temp"></span>°C</h4>
           <ul class="list-unstyled mt-3 mb-1 hum_title">
             <li>Min. vlažnost u <span id="current_min_hum_time"></span> na <span id="current_min_hum_sensor"></span></li>
@@ -69,7 +67,7 @@
             <li>Maks. Temperatura u <span id="current_max_temp_time"></span> na <span id="current_max_temp_sensor"></span></li>
           </ul>
           <h4 class="card-title pricing-card-title temp_color">         
-            <i class="fa-solid fa-temperature-three-quarters"></i>
+          <i class="fa-solid fa-temperature-arrow-up"></i>
             <span id="current_max_temp"></span>°C</h4>
           <ul class="list-unstyled mt-3 mb-1 hum_title">
             <li>Maks. vlažnost u <span id="current_max_hum_time"></span> na <span id="current_max_hum_sensor"></span></li>
@@ -96,17 +94,17 @@
             </div>
             <div class="card-body">
             <ul class="list-unstyled mt-3 mb-1 temp_title">
-              <li>TEMPERATURA</li>
+              <li>TEMPERATURA (<span id="t1_temp_diff"></span>°C)</li>
             </ul>
-            <h1 class="card-title pricing-card-title temp_color"><i class="fa-solid fa-temperature-arrow-up"></i> <span id="t1_temp"></span>°C</h1>
+            <h1 class="card-title pricing-card-title temp_color" id="t1_temp"></h1>
             <ul class="list-unstyled mt-3 mb-1 hum_title">
-              <li>VLAŽNOST</li>
+              <li>VLAŽNOST (<span id="t1_hum_diff"></span>%)</li>
             </ul>  
             <h1 class="card-title pricing-card-title hum_color"><i class="fa-solid fa-droplet"></i> <span id="t1_hum"></span>%</h1>
               <ul class="list-unstyled mt-3 mb-1">
               <li class="sub_text"><span id="t1_time" style="text-align:left;"></span> </li>
             </ul>  
-            <a class="btn btn-lg btn-block btn-outline-primary" href="wTH1.php" role="button">Detaljnije</a>
+            <!-- <a class="btn btn-lg btn-block btn-outline-primary" href="wTH1.php" role="button">Detaljnije</a> -->
             </div>
           </div>
 
@@ -117,18 +115,17 @@
             </div>
             <div class="card-body">
             <ul class="list-unstyled mt-3 mb-1 temp_title">
-              <li>TEMPERATURA (+1.6°C)</li>
+              <li>TEMPERATURA (<span id="t2_temp_diff"></span>°C)</li>
             </ul>
-              <h1 class="card-title pricing-card-title temp_color">         
-              <i class="fa-solid fa-temperature-arrow-up"></i> <span id="t2_temp"></span>°C</h1>
+              <h1 class="card-title pricing-card-title temp_color" id="t2_temp">°C</h1>
             <ul class="list-unstyled mt-3 mb-1 hum_title">
-              <li>VLAŽNOST (-4%)</li>
+              <li>VLAŽNOST (<span id="t2_hum_diff"></span>%)</li>
             </ul>  
               <h1 class="card-title pricing-card-title hum_color"><i class="fa-solid fa-droplet"></i> <span id="t2_hum"></span>%</h1>
               <ul class="list-unstyled mt-3 mb-1">
               <li class="sub_text" ><span id="t2_time"></span> </li>
             </ul>  
-            <a class="btn btn-lg btn-block btn-outline-primary" href="wTH1.php" role="button">Detaljnije</a>
+            <!-- <a class="btn btn-lg btn-block btn-outline-primary" href="wTH1.php" role="button">Detaljnije</a> -->
             </div>
           </div>
           
@@ -138,17 +135,17 @@
             </div>
             <div class="card-body">
             <ul class="list-unstyled mt-3 mb-1 temp_title">
-              <li>TEMPERATURA</li>
+              <li>TEMPERATURA (<span id="t3_temp_diff"></span>°C)</li>
             </ul>
-              <h1 class="card-title pricing-card-title temp_color"><i class="fa-solid fa-temperature-arrow-up"></i> <span id="t3_temp"></span>°C</h1>
+              <h1 class="card-title pricing-card-title temp_color" id="t3_temp"></h1>
             <ul class="list-unstyled mt-3 mb-1 hum_title">
-              <li>VLAŽNOST</li>
+              <li>VLAŽNOST (<span id="t3_hum_diff"></span>%)</li>
             </ul>  
               <h1 class="card-title pricing-card-title hum_color"><i class="fa-solid fa-droplet"></i> <span id="t3_hum"></span>%</h1>
               <ul class="list-unstyled mt-3 mb-1">
               <li class="sub_text"><span id="t3_time"></span> </li>
             </ul>  
-            <a class="btn btn-lg btn-block btn-outline-primary" href="wTH1.php" role="button">Detaljnije</a>
+            <!-- <a class="btn btn-lg btn-block btn-outline-primary" href="wTH1.php" role="button">Detaljnije</a> -->
             </div>
           </div>
           

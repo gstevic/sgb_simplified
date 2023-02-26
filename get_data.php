@@ -59,6 +59,62 @@ if (mysqli_query($conn, $sql_t3)) {
 }
 
 //GET Data for T3 sensor end
+
+
+//GET Old Data for T1 sensor start
+$sql_t1_old = "SELECT temperature, humidity, created_at FROM readings where created_at < (SELECT MAX(created_at) FROM readings where sensor='t1') and sensor='t1' order by created_at desc LIMIT 1";
+
+if (mysqli_query($conn, $sql_t1_old)) {
+ $result = $conn->query($sql_t1_old);
+ if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    $old_temp_t1 = $row["temperature"];
+    $old_hum_t1 = $row["humidity"];
+  }
+} else {
+  //echo "0 results";
+}
+}
+//GET old Data for T1 sensor end
+
+
+//GET Old Data for T2 sensor start
+$sql_t2_old = "SELECT temperature, humidity, created_at FROM readings where created_at < (SELECT MAX(created_at) FROM readings where sensor='t2') and sensor='t2' order by created_at desc LIMIT 1";
+
+if (mysqli_query($conn, $sql_t2_old)) {
+ $result = $conn->query($sql_t2_old);
+ if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    $old_temp_t2 = $row["temperature"];
+    $old_hum_t2 = $row["humidity"];
+  }
+} else {
+  //echo "0 results";
+}
+}
+//GET old Data for T2 sensor end
+
+
+//GET Old Data for T3 sensor start
+$sql_t3_old = "SELECT temperature, humidity, created_at FROM readings where created_at < (SELECT MAX(created_at) FROM readings where sensor='t3') and sensor='t3' order by created_at desc LIMIT 1";
+
+if (mysqli_query($conn, $sql_t3_old)) {
+ $result = $conn->query($sql_t3_old);
+ if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    $old_temp_t3 = $row["temperature"];
+    $old_hum_t3  = $row["humidity"];
+  }
+} else {
+  //echo "0 results";
+}
+}
+//GET old Data for T3 sensor end
+
+
 //********************************************* GET SENSOR DATA END *************************** */
 
 //********************************************* GET MIN/MAX MEASURMENTS FOR THE CURRENT DATE START *************************** */
@@ -153,7 +209,8 @@ $current_temp_t3, $current_hum_t3, $current_time_t3,
 $current_min_temp, $current_min_temp_time, $current_min_temp_sensor, 
 $current_max_temp, $current_max_temp_time, $current_max_temp_sensor , 
 $current_min_hum, $current_min_hum_time, $current_min_hum_sensor, 
-$current_max_hum, $current_max_hum_time, $current_max_hum_sensor];
+$current_max_hum, $current_max_hum_time, $current_max_hum_sensor, 
+$old_temp_t1, $old_hum_t1, $old_temp_t2, $old_hum_t2, $old_temp_t3, $old_hum_t3];
 echo implode(", ", $t_data);
 require('includes/inc_disc.php');
 ?>

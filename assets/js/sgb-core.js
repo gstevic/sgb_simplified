@@ -7,91 +7,224 @@ function getData(){
         //console.log("Response: " + data);
         //document.getElementById("value1").innerHTML = data;
         const myArray = data.split(", ");
+
+
+        
+
         //t1 current data set
         t1_temp = parseFloat(myArray[0]).toFixed(1);
         t1_hum = parseFloat(myArray[1]).toFixed(1);
         t1_time = formatDate(myArray[2]);
-        document.getElementById("t1_temp").innerHTML = t1_temp;
+        //t1 old
+         t1_old_temp = parseFloat(myArray[21]).toFixed(1);
+         t1_old_hum = parseFloat(myArray[22]).toFixed(1);
+        //temp diffrence start
+        t1_temp_difference = t1_temp - t1_old_temp;
+        if(parseFloat(t1_temp)>parseFloat(t1_old_temp)){
+            document.getElementById("t1_temp_diff").innerHTML = "+"+parseFloat(t1_temp_difference).toFixed(1);
+            document.getElementById("t1_temp").innerHTML = '<i class="fa-solid fa-temperature-arrow-up"></i> '+t1_temp+'°C';
+        }
+        else if(parseFloat(t1_temp)==parseFloat(t1_old_temp)){
+            document.getElementById("t1_temp_diff").innerHTML = parseFloat(t1_temp_difference).toFixed(1);
+            document.getElementById("t1_temp").innerHTML = '<i class="fa-solid fa-temperature-three-quarters"></i> '+t1_temp+'°C';
+        }
+        else{
+            document.getElementById("t1_temp_diff").innerHTML = parseFloat(t1_temp_difference).toFixed(1);
+            document.getElementById("t1_temp").innerHTML = '<i class="fa-solid fa-temperature-arrow-down"></i> '+t1_temp+'°C';
+        }
+        //hum diffrence start
+            t1_hum_difference = t1_hum - t1_old_hum;
+            if(t1_hum>t1_old_hum){
+                document.getElementById("t1_hum_diff").innerHTML = "+"+parseFloat(t1_hum_difference).toFixed(1);
+            }
+            else{
+                document.getElementById("t1_hum_diff").innerHTML = parseFloat(t1_hum_difference).toFixed(1);
+            }
+         //temp diffrence end
         document.getElementById("t1_hum").innerHTML = t1_hum;
-        document.getElementById("t1_time").innerHTML =  t1_time;
+
+
+
+
         //t2 current data set
         t2_temp = parseFloat(myArray[3]).toFixed(1);
-        $t2_hum = parseFloat(myArray[4]).toFixed(1);
+        t2_hum = parseFloat(myArray[4]).toFixed(1);
         t2_time = formatDate(myArray[5]);
-        document.getElementById("t2_temp").innerHTML = t2_temp;
-        document.getElementById("t2_hum").innerHTML = $t2_hum;
-        document.getElementById("t2_time").innerHTML = myArray[5];
+        
+        //t2 old
+        t2_old_temp = parseFloat(myArray[23]).toFixed(1);
+        console.log(t2_temp);
+        console.log(t2_old_temp);
+        t2_old_hum = parseFloat(myArray[24]).toFixed(1);
+       //temp diffrence start
+       t2_temp_difference = t2_temp - t2_old_temp;
+       if(parseFloat(t2_temp)>parseFloat(t2_old_temp)){
+           //console.log('here');
+           document.getElementById("t2_temp_diff").innerHTML = '+'+parseFloat(t2_temp_difference).toFixed(1);
+           document.getElementById("t2_temp").innerHTML = '<i class="fa-solid fa-temperature-arrow-up"></i> '+t2_temp+'°C';
+       }
+       else if(parseFloat(t2_temp)==parseFloat(t2_old_temp)){
+       // console.log('here');
+           document.getElementById("t2_temp_diff").innerHTML = parseFloat(t2_temp_difference).toFixed(1);
+           document.getElementById("t2_temp").innerHTML = '<i class="fa-solid fa-temperature-three-quarters"></i> '+t2_temp+'°C';
+       }
+       else{
+       // console.log('here');
+           document.getElementById("t2_temp_diff").innerHTML = parseFloat(t2_temp_difference).toFixed(1);
+           document.getElementById("t2_temp").innerHTML = '<i class="fa-solid fa-temperature-arrow-down"></i> '+t2_temp+'°C';
+       }
+       //hum diffrence start
+           t2_hum_difference = t2_hum - t2_old_hum;
+           if(t2_hum>t2_old_hum){
+               document.getElementById("t2_hum_diff").innerHTML = "+"+parseFloat(t2_hum_difference).toFixed(1);
+           }
+           else{
+               document.getElementById("t2_hum_diff").innerHTML = parseFloat(t2_hum_difference).toFixed(1);
+           }
+        //temp diffrence end
+        document.getElementById("t2_hum").innerHTML = t2_hum;
+
+
+
+
         //t3 current data set
-        $t3_temp = parseFloat(myArray[6]).toFixed(1);
-        $t3_hum = parseFloat(myArray[7]).toFixed(1);
-        t3_time = formatDate(myArray[8]);
-        document.getElementById("t3_temp").innerHTML =  $t3_temp;
-        document.getElementById("t3_hum").innerHTML = $t3_hum;
-        document.getElementById("t3_time").innerHTML = myArray[8];
+        t3_temp = parseFloat(myArray[6]).toFixed(1);
+        t3_hum = parseFloat(myArray[7]).toFixed(1);
+        t3_time = formatDate(myArray[8]);   
+        //t3 old
+        t3_old_temp = parseFloat(myArray[25]).toFixed(1);
+        t3_old_hum = parseFloat(myArray[26]).toFixed(1);
+       //temp diffrence start
+       t3_temp_difference = t3_temp - t3_old_temp;
+       if(parseFloat(t3_temp)>parseFloat(t3_old_temp)){
+           document.getElementById("t3_temp_diff").innerHTML = "+"+parseFloat(t3_temp_difference).toFixed(1);
+           document.getElementById("t3_temp").innerHTML = '<i class="fa-solid fa-temperature-arrow-up"></i> '+t3_temp+'°C';
+       }
+       else if(parseFloat(t3_temp)==parseFloat(t3_old_temp)){
+           document.getElementById("t3_temp_diff").innerHTML = parseFloat(t3_temp_difference).toFixed(1);
+           document.getElementById("t3_temp").innerHTML = '<i class="fa-solid fa-temperature-three-quarters"></i> '+t3_temp+'°C';
+       }
+       else{
+           document.getElementById("t3_temp_diff").innerHTML = parseFloat(t3_temp_difference).toFixed(1);
+           document.getElementById("t3_temp").innerHTML = '<i class="fa-solid fa-temperature-arrow-down"></i> '+t3_temp+'°C';
+       }
+       //hum diffrence start
+           t3_hum_difference = t3_hum - t3_old_hum;
+           if(t3_hum>t3_old_hum){
+               document.getElementById("t3_hum_diff").innerHTML = "+"+parseFloat(t3_hum_difference).toFixed(1);
+           }
+           else{
+               document.getElementById("t3_hum_diff").innerHTML = parseFloat(t3_hum_difference).toFixed(1);
+           }
+        //temp diffrence end
+
+        document.getElementById("t3_hum").innerHTML = t3_hum;
 
         //Min Temp values data set
         if(isNaN(myArray[9])){
-          $min_temp = '-';
-          $min_temp_sensor = '-';
-          $min_temp_time = '-';
+          min_temp = '-';
+          min_temp_sensor = '-';
+          min_temp_time = '-';
         }
         else{
-          $min_temp = parseFloat(myArray[9]).toFixed(1);
-          $min_temp_sensor = myArray[11];
-          $min_temp_time = formatDateToTime(myArray[10]);
+          min_temp = parseFloat(myArray[9]).toFixed(1);
+          min_temp_sensor = myArray[11];
+          min_temp_time = formatDateToTime(myArray[10]);
         }
-        document.getElementById("current_min_temp").innerHTML =  $min_temp;
-        document.getElementById("current_min_temp_sensor").innerHTML = $min_temp_sensor;
-        document.getElementById("current_min_temp_time").innerHTML = $min_temp_time;
+        document.getElementById("current_min_temp").innerHTML =  min_temp;
+        document.getElementById("current_min_temp_sensor").innerHTML = min_temp_sensor;
+        document.getElementById("current_min_temp_time").innerHTML = min_temp_time;
         //Max Temp values data set
          if(isNaN(myArray[9])){
-          $max_temp = '-';
-          $max_temp_sensor = '-';
-          $max_temp_time = '-';
+          max_temp = '-';
+          max_temp_sensor = '-';
+          max_temp_time = '-';
         }
         else{
-          $max_temp = parseFloat(myArray[12]).toFixed(1);
-          $max_temp_sensor = myArray[14];
-          $max_temp_time = formatDateToTime(myArray[13]);
+          max_temp = parseFloat(myArray[12]).toFixed(1);
+          max_temp_sensor = myArray[14];
+          max_temp_time = formatDateToTime(myArray[13]);
         }
-        document.getElementById("current_max_temp").innerHTML =  $max_temp;
-        document.getElementById("current_max_temp_sensor").innerHTML = $max_temp_sensor;
-        document.getElementById("current_max_temp_time").innerHTML = $max_temp_time;
+        document.getElementById("current_max_temp").innerHTML =  max_temp;
+        document.getElementById("current_max_temp_sensor").innerHTML = max_temp_sensor;
+        document.getElementById("current_max_temp_time").innerHTML = max_temp_time;
         //Min Hum values data set
         if(isNaN(myArray[9])){
-          $min_hum = '-';
-          $min_hum_sensor = '-';
-          $min_hum_time = '-';
+          min_hum = '-';
+          min_hum_sensor = '-';
+          min_hum_time = '-';
         }
         else{
-          $min_hum = parseFloat(myArray[15]).toFixed(1);
-          $min_hum_sensor = myArray[17];
-          $min_hum_time = formatDateToTime(myArray[16]);
+          min_hum = parseFloat(myArray[15]).toFixed(1);
+          min_hum_sensor = myArray[17];
+          min_hum_time = formatDateToTime(myArray[16]);
         }
-        document.getElementById("current_min_hum").innerHTML =  $min_hum;
-        document.getElementById("current_min_hum_sensor").innerHTML = $min_hum_sensor;
-        document.getElementById("current_min_hum_time").innerHTML = $min_hum_time;
+        document.getElementById("current_min_hum").innerHTML =  min_hum;
+        document.getElementById("current_min_hum_sensor").innerHTML = min_hum_sensor;
+        document.getElementById("current_min_hum_time").innerHTML = min_hum_time;
         //Max Hum values data set
         if(isNaN(myArray[9])){
-          $max_hum = '-';
-          $max_hum_sensor = '-';
-          $max_hum_time = '-';
+          max_hum = '-';
+          max_hum_sensor = '-';
+          max_hum_time = '-';
         }
         else{
-          $max_hum = parseFloat(myArray[18]).toFixed(1);
-          $max_hum_sensor = myArray[20];
-          $max_hum_time = formatDateToTime(myArray[19]);
+          max_hum = parseFloat(myArray[18]).toFixed(1);
+          max_hum_sensor = myArray[20];
+          max_hum_time = formatDateToTime(myArray[19]);
         }
-        document.getElementById("current_max_hum").innerHTML =  $max_hum;
-        document.getElementById("current_max_hum_sensor").innerHTML = $max_hum_sensor;
-        document.getElementById("current_max_hum_time").innerHTML = $max_hum_time;
+        document.getElementById("current_max_hum").innerHTML =  max_hum;
+        document.getElementById("current_max_hum_sensor").innerHTML = max_hum_sensor;
+        document.getElementById("current_max_hum_time").innerHTML = max_hum_time;
+
+
+        
+
+
+        
 
         //current avg temp - calculation
-        $current_avg_temp = ((parseFloat(myArray[0])+parseFloat(myArray[3])+parseFloat(myArray[6]))/3).toFixed(2);
-        $current_avg_hum = ((parseFloat(myArray[1])+parseFloat(myArray[4])+parseFloat(myArray[7]))/3).toFixed(2);
+        current_avg_temp = ((parseFloat(myArray[0])+parseFloat(myArray[3])+parseFloat(myArray[6]))/3).toFixed(2);
+        current_avg_hum = ((parseFloat(myArray[1])+parseFloat(myArray[4])+parseFloat(myArray[7]))/3).toFixed(2);
+
+        old_avg_temp = ((parseFloat(t1_old_temp)+parseFloat(t2_old_temp)+parseFloat(t3_old_temp))/3).toFixed(2);
+        old_avg_hum = ((parseFloat(t1_old_hum)+parseFloat(t2_old_hum)+parseFloat(t3_old_hum))/3).toFixed(2);
+
+        avg_temp_diffrence = current_avg_temp - old_avg_temp;
+        avg_hum_diffrence = current_avg_hum - old_avg_hum;
+
+
         //current avg temp/hum set
-        document.getElementById("current_avg_temp").innerHTML = $current_avg_temp;
-        document.getElementById("current_avg_hum").innerHTML = $current_avg_hum;
+        if(parseFloat(current_avg_temp)>parseFloat(old_avg_temp)){
+            document.getElementById("avg_temp_diffrence").innerHTML = "+"+parseFloat(avg_temp_diffrence).toFixed(2);
+            document.getElementById("current_avg_temp").innerHTML = '<i class="fa-solid fa-temperature-arrow-up"></i> '+current_avg_temp+'°C';
+        }
+        else if(parseFloat(current_avg_temp)==parseFloat(old_avg_temp)){
+            document.getElementById("avg_temp_diffrence").innerHTML = parseFloat(avg_temp_diffrence).toFixed(1);
+            document.getElementById("current_avg_temp").innerHTML = '<i class="fa-solid fa-temperature-three-quarters"></i> '+current_avg_temp+'°C';
+        }
+        else{
+            document.getElementById("avg_temp_diffrence").innerHTML = parseFloat(avg_temp_diffrence).toFixed(1);
+            document.getElementById("current_avg_temp").innerHTML = '<i class="fa-solid fa-temperature-arrow-down"></i> '+current_avg_temp+'°C';
+        }
+
+        //current avg hum/hum set
+        if(parseFloat(current_avg_hum)>parseFloat(old_avg_hum)){
+            document.getElementById("avg_hum_diffrence").innerHTML = "+"+parseFloat(avg_hum_diffrence).toFixed(2);
+            //document.getElementById("current_avg_hum").innerHTML = '<i class="fa-solid fa-humerature-arrow-up"></i> '+current_avg_hum+'°C';
+        }
+        else if(parseFloat(current_avg_hum)==parseFloat(old_avg_hum)){
+            document.getElementById("avg_hum_diffrence").innerHTML = parseFloat(avg_hum_diffrence).toFixed(2);
+            //document.getElementById("current_avg_hum").innerHTML = '<i class="fa-solid fa-humerature-three-quarters"></i> '+current_avg_hum+'°C';
+        }
+        else{
+            document.getElementById("avg_hum_diffrence").innerHTML = parseFloat(avg_hum_diffrence).toFixed(2);
+           // document.getElementById("current_avg_hum").innerHTML = '<i class="fa-solid fa-humerature-arrow-down"></i> '+current_avg_hum+'°C';
+        }
+
+
+      //  document.getElementById("current_avg_temp").innerHTML = current_avg_temp;
+        document.getElementById("current_avg_hum").innerHTML = current_avg_hum;
 
         //format date function
         function formatDate(dateTimeInput){
