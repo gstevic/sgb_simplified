@@ -100,7 +100,7 @@
             <ul class="list-unstyled mt-3 mb-1 hum_title">
               <li>VLAŽNOST (<span id="t1_hum_diff"></span>%)</li>
             </ul>  
-            <h1 class="card-title pricing-card-title hum_color"><i class="fa-solid fa-droplet"></i> <span id="t1_hum"></span>%</h1>
+              <h1 class="card-title pricing-card-title hum_color" id="t1_hum"></h1>
               <ul class="list-unstyled mt-3 mb-1">
               <li class="sub_text"><span id="t1_time" style="text-align:left;"></span> </li>
             </ul>  
@@ -121,8 +121,7 @@
             <ul class="list-unstyled mt-3 mb-1 hum_title">
               <li>VLAŽNOST (<span id="t2_hum_diff"></span>%)</li>
             </ul>  
-              <h1 class="card-title pricing-card-title hum_color"><i class="fa-solid fa-droplet"></i> <span id="t2_hum"></span>%</h1>
-              <ul class="list-unstyled mt-3 mb-1">
+              <h1 class="card-title pricing-card-title hum_color" id="t2_hum"></h1>              <ul class="list-unstyled mt-3 mb-1">
               <li class="sub_text" ><span id="t2_time"></span> </li>
             </ul>  
             <!-- <a class="btn btn-lg btn-block btn-outline-primary" href="wTH1.php" role="button">Detaljnije</a> -->
@@ -141,7 +140,7 @@
             <ul class="list-unstyled mt-3 mb-1 hum_title">
               <li>VLAŽNOST (<span id="t3_hum_diff"></span>%)</li>
             </ul>  
-              <h1 class="card-title pricing-card-title hum_color"><i class="fa-solid fa-droplet"></i> <span id="t3_hum"></span>%</h1>
+              <h1 class="card-title pricing-card-title hum_color" id="t3_hum"></h1>
               <ul class="list-unstyled mt-3 mb-1">
               <li class="sub_text"><span id="t3_time"></span> </li>
             </ul>  
@@ -165,7 +164,7 @@
     <?php
           //  require_once("includes/lib.php");
     ?>
-    <script src="assets/js/sgb-core.js"></script>
+    <script src="assets/js/sgb-core-0101.js"></script>
      <!-- Libraries end -->
 
      
