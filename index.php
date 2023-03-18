@@ -43,8 +43,19 @@
             <ul class="list-unstyled mt-3 mb-1">
             <!-- <li class="sub_text">Podaci od prije 1 min i 27 sek </li> -->
           </ul>  
+
+          <ul class="list-unstyled mt-3 mb-1 gray_title" >
+            <li>PROSJEK ZA POSLEDNJIH 6 SATI</li>
+          </ul> 
+
+          <canvas id="chartJSMixedDB"></canvas>
+
             <!-- <a class="btn btn-lg btn-block btn-outline-primary" href="sub-page.php" role="button">Detaljnije</a> -->
           </div>
+
+         
+            
+   
         </div>
         <div class="card mb-3 box-shadow">
           <div class="card-header">
@@ -166,9 +177,80 @@
     ?>
     <script src="assets/js/sgb-core-0101.js"></script>
      <!-- Libraries end -->
+<script>  
 
-     
+//Mixed Chart - php data begin
 
+
+
+
+ $(document).ready(function () {
+        showGraphMixedChart();
+    });
+
+    const showGraphMixedChart = () => {
+        {
+            $.post("includes/data/cJSavg6.php",function (data_avg)
+            {
+
+             // console.log(data_avg);
+              var temp = [];
+              var hum = [];
+
+              for (var i in data_avg) {
+                temp.push(data_avg[i].temp);
+                hum.push(data_avg[i].hum);
+              }
+              
+
+            //  console.log(temp);
+
+
+   chartdataLines2 = { datasets: [{
+       label: 'Temperatura',
+       data: temp,
+       backgroundColor: '#E86144',
+                            borderColor: '#E86144',
+                            hoverBackgroundColor: '#ffa084',
+                            hoverBorderColor: '#666666',
+       // this dataset is drawn below
+       order: 2
+   }, {
+       label: 'Vlažnost',
+       data: hum,
+       type: 'line',
+       borderColor: 'blue',
+       backgroundColor: 'blue',
+       // this dataset is drawn on top
+       order: 1
+   }],
+   labels: ['6h','5h', '4h', '3h', '2h', '1h', 'A']
+  };
+
+    var graphTarget2 = $("#chartJSMixedDB");
+
+    var barGraph2 = new Chart(graphTarget2, {
+                  type: 'bar',
+                  data: chartdataLines2
+              });
+    // options: options
+   
+    // console.log('here');
+
+
+    });
+ 
+ 
+}
+}
+
+
+ //Mixed Chart - php data end
+ </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   </body>
 </html>

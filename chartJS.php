@@ -51,7 +51,27 @@
     <div class="col-md-12">
             <canvas id="chartJSMultiLinesDB"></canvas>
     </div>
+
+
+    <div class="py-5 text-center">
+      <h3>#3 Mixed chart</h3> <!-- Page title-->
+      <p class="lead">Data is coming from the hardcoded dataset</p>
+    </div>
+
+    <div class="col-md-12">
+            <canvas id="mixed-chart"></canvas>
+    </div> 
+
+    
         
+    <div class="py-5 text-center">
+      <h3>#3 Mixed chart</h3> <!-- Page title-->
+      <p class="lead">Data is coming from the ncludes/data/chartJSdata.php page.</p>
+    </div>
+
+    <div class="col-md-12">
+            <canvas id="chartJSMixedDB"></canvas>
+    </div> 
 
 
    
@@ -267,6 +287,90 @@ $(document).ready(function () {
             }
         }
      //#1 Bars example end
+
+     //Mixed Chart begin
+     new Chart(document.getElementById("mixed-chart"), {
+      type: 'bar',
+   data: {
+       datasets: [{
+           label: 'Bar Dataset',
+           data: [10, 20, 30, 40],
+           backgroundColor: '#E86144',
+                                borderColor: '#E86144',
+                                hoverBackgroundColor: '#ffa084',
+                                hoverBorderColor: '#666666',
+           // this dataset is drawn below
+           order: 2
+       }, {
+           label: 'Line Dataset',
+           data: [10, 25, 10, 10],
+           type: 'line',
+           borderColor: 'blue',
+           backgroundColor: 'blue',
+           // this dataset is drawn on top
+           order: 1
+       }],
+       labels: ['January', 'February', 'March', 'April']
+   },
+  // options: options
+});
+
+     //Mixed Chart end
+
+
+
+
+
+     //Mixed Chart - php data begin
+
+
+    chartdataLines2 = { datasets: [{
+           label: 'Bar Dataset',
+           data: [10, 20, 30, 40],
+           backgroundColor: '#E86144',
+                                borderColor: '#E86144',
+                                hoverBackgroundColor: '#ffa084',
+                                hoverBorderColor: '#666666',
+           // this dataset is drawn below
+           order: 2
+       }, {
+           label: 'Line Dataset',
+           data: [10, 25, 30, 10],
+           type: 'line',
+           borderColor: 'blue',
+           backgroundColor: 'blue',
+           // this dataset is drawn on top
+           order: 1
+       }],
+       labels: ['January', 'February', 'March', 'April']
+      };
+
+     $(document).ready(function () {
+            showGraphMixedChart();
+        });
+
+        const showGraphMixedChart = () => {
+            {
+                $.post("includes/data/chartJSdataMultipleLines.php",function (data1)
+                {
+      var graphTarget2 = $("#chartJSMixedDB");
+
+      var barGraph2 = new Chart(graphTarget2, {
+                        type: 'bar',
+                        data: chartdataLines2
+                    });
+        // options: options
+         
+       // console.log('here');
+
+        });
+     
+     
+    }
+  }
+
+  
+     //Mixed Chart - php data end
 
 
 
