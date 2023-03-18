@@ -4,31 +4,31 @@
     //$conn = mysqli_connect("localhost","root","","sgba");
     require('../inc_conn.php');
 
-    $sqlQuery_tA = "SELECT AVG(temperature) temp, AVG(humidity) hum  FROM readings 
+    $sqlQuery_tA = "SELECT ROUND(AVG(temperature),2) temp, ROUND(AVG(humidity),2) hum  FROM readings 
     WHERE DATE(created_at) = CURDATE() 
     AND HOUR(created_at) = HOUR(NOW())";
 
-    $sqlQuery_t1 = "SELECT AVG(temperature) temp, AVG(humidity) hum  FROM readings 
+    $sqlQuery_t1 = "SELECT ROUND(AVG(temperature),2) temp, ROUND(AVG(humidity),2) hum  FROM readings 
     WHERE DATE(created_at) = CURDATE() 
     AND HOUR(created_at) = HOUR(NOW())-1";
 
-    $sqlQuery_t2 = "SELECT AVG(temperature) temp, AVG(humidity) hum  FROM readings 
+    $sqlQuery_t2 = "SELECT ROUND(AVG(temperature),2) temp, ROUND(AVG(humidity),2) hum  FROM readings 
     WHERE DATE(created_at) = CURDATE() 
     AND HOUR(created_at) = HOUR(NOW())-2";
 
-    $sqlQuery_t3 = "SELECT AVG(temperature) temp, AVG(humidity) hum  FROM readings 
+    $sqlQuery_t3 = "SELECT ROUND(AVG(temperature),2) temp, ROUND(AVG(humidity),2) hum  FROM readings 
     WHERE DATE(created_at) = CURDATE() 
     AND HOUR(created_at) = HOUR(NOW())-3";
 
-    $sqlQuery_t4 = "SELECT AVG(temperature) temp, AVG(humidity) hum  FROM readings 
+    $sqlQuery_t4 = "SELECT ROUND(AVG(temperature),2) temp, ROUND(AVG(humidity),2) hum  FROM readings 
     WHERE DATE(created_at) = CURDATE() 
     AND HOUR(created_at) = HOUR(NOW())-4";
 
-    $sqlQuery_t5 = "SELECT AVG(temperature) temp, AVG(humidity) hum  FROM readings 
+    $sqlQuery_t5 = "SELECT ROUND(AVG(temperature),2) temp, ROUND(AVG(humidity),2) hum  FROM readings 
     WHERE DATE(created_at) = CURDATE() 
     AND HOUR(created_at) = HOUR(NOW())-5";
 
-    $sqlQuery_t6 = "SELECT AVG(temperature) temp, AVG(humidity) hum  FROM readings 
+    $sqlQuery_t6 = "SELECT ROUND(AVG(temperature),2) temp, ROUND(AVG(humidity),2) hum  FROM readings 
     WHERE DATE(created_at) = CURDATE() 
     AND HOUR(created_at) = HOUR(NOW())-6";
     
