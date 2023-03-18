@@ -210,9 +210,9 @@
        label: 'Temperatura',
        data: temp,
        backgroundColor: '#ffa084',
-                            borderColor: '#E86144',
-                            hoverBackgroundColor: '#E86144',
-                            hoverBorderColor: '#666666',
+       borderColor: '#E86144',
+       hoverBackgroundColor: '#E86144',
+       hoverBorderColor: '#666666',
        // this dataset is drawn below
        order: 2
    }, {
@@ -221,6 +221,8 @@
        type: 'line',
        borderColor: '#6fc1fa',
        backgroundColor: '#6fc1fa',
+       hoverBackgroundColor: '#0096FF',
+       hoverBorderColor: '#666666',
        // this dataset is drawn on top
        order: 1
    }],
