@@ -50,7 +50,7 @@
 
           <canvas id="chartJSMixedDB"></canvas>
 
-            <!-- <a class="btn btn-lg btn-block btn-outline-primary" href="sub-page.php" role="button">Detaljnije</a> -->
+             <a class="btn btn-lg btn-block btn-outline-primary" href="avg.php" role="button">Detaljnije</a> 
           </div>
 
          
@@ -179,11 +179,54 @@
      <!-- Libraries end -->
 <script>  
 
+  const now = new Date();
+  const sixHoursAgo = new Date(now.getTime() - (6 * 60 * 60 * 1000));
+  const fiveHoursAgo = new Date(now.getTime() - (5 * 60 * 60 * 1000));
+  const fourHoursAgo = new Date(now.getTime() - (4 * 60 * 60 * 1000));
+  const threeHoursAgo = new Date(now.getTime() - (3 * 60 * 60 * 1000));
+  const twoHoursAgo = new Date(now.getTime() - (2 * 60 * 60 * 1000));
+  const oneHourAgo = new Date(now.getTime() - (1 * 60 * 60 * 1000));
+  const nowHour = new Date(now.getTime());
+
+
+  const options = { 
+ // year: 'numeric', 
+ // month: 'short', 
+ // day: 'numeric', 
+  hour: 'numeric', 
+ // minute: 'numeric', 
+ // second: 'numeric', 
+  hour12: false 
+};
+
+
+ // console.log(`Current time: ${now.toLocaleString()}`);
+ // console.log(`Six hours ago: ${sixHoursAgo.toLocaleString('sr-SP', options)}`);
+ // console.log(`Six hours ago: ${fiveHoursAgo.toLocaleString('sr-SP', options)}`);
+ // console.log(`Six hours ago: ${fourHoursAgo.toLocaleString('sr-SP', options)}`);
+ // console.log(`Six hours ago: ${threeHoursAgo.toLocaleString('sr-SP', options)}`);
+ // console.log(`Six hours ago: ${twoHoursAgo.toLocaleString('sr-SP', options)}`);
+ // console.log(`Six hours ago: ${oneHourAgo.toLocaleString('sr-SP', options)}`);
+ // console.log(`Six hours ago: ${nowHour.toLocaleString('sr-SP', options)}`);
+
+  sixH = sixHoursAgo.toLocaleString('sr-SP', options);
+  fiveH = fiveHoursAgo.toLocaleString('sr-SP', options);
+  fourH = fourHoursAgo.toLocaleString('sr-SP', options);
+  threeH = threeHoursAgo.toLocaleString('sr-SP', options);
+  twoH = twoHoursAgo.toLocaleString('sr-SP', options);
+  oneH = oneHourAgo.toLocaleString('sr-SP', options);
+  nowH = nowHour.toLocaleString('sr-SP', options);
+
+
+  var hourLabels = [];
+
+  hourLabels.push(sixH+'h', fiveH+'h', fourH+'h', threeH+'h', twoH+'h', oneH+'h', nowH+'h');
+
+  console.log(hourLabels)
+
+
+
 //Mixed Chart - php data begin
-
-
-
-
  $(document).ready(function () {
         showGraphMixedChart();
     });
@@ -223,10 +266,11 @@
        backgroundColor: '#6fc1fa',
        hoverBackgroundColor: '#0096FF',
        hoverBorderColor: '#666666',
+       //lineTension: 0.2,
        // this dataset is drawn on top
        order: 1
    }],
-   labels: ['6h','5h', '4h', '3h', '2h', '1h', 'A']
+   labels: hourLabels
   };
 
     var graphTarget2 = $("#chartJSMixedDB");
@@ -235,7 +279,8 @@
                   type: 'bar',
                   data: chartdataLines2
               });
-    // options: options
+     //options: bezierCurve: true
+
    
     // console.log('here');
 
