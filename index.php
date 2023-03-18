@@ -219,8 +219,8 @@
        label: 'Vlažnost',
        data: hum,
        type: 'line',
-       borderColor: 'blue',
-       backgroundColor: 'blue',
+       borderColor: '#6fc1fa',
+       backgroundColor: '#6fc1fa',
        // this dataset is drawn on top
        order: 1
    }],
