@@ -209,9 +209,9 @@
    chartdataLines2 = { datasets: [{
        label: 'Temperatura',
        data: temp,
-       backgroundColor: '#E86144',
+       backgroundColor: '#ffa084',
                             borderColor: '#E86144',
-                            hoverBackgroundColor: '#ffa084',
+                            hoverBackgroundColor: '#E86144',
                             hoverBorderColor: '#666666',
        // this dataset is drawn below
        order: 2
