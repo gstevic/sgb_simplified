@@ -280,13 +280,9 @@
                   data: chartdataLines2
               });
      //options: bezierCurve: true
-
-   
     // console.log('here');
 
-
     });
- 
  
 }
 }
