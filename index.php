@@ -222,7 +222,7 @@
 
   hourLabels.push(sixH+'h', fiveH+'h', fourH+'h', threeH+'h', twoH+'h', oneH+'h', nowH+'h');
 
-  console.log(hourLabels)
+  //console.log(hourLabels)
 
 
 

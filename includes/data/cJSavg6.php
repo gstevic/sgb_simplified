@@ -1,81 +1,20 @@
 <?php
     header('Content-Type: application/json');
 
-    //$conn = mysqli_connect("localhost","root","","sgba");
     require('../inc_conn.php');
 
-    $sqlQuery_tA = "SELECT ROUND(AVG(temperature),2) temp, ROUND(AVG(humidity),2) hum  FROM readings 
-    WHERE DATE(created_at) = CURDATE() 
-    AND HOUR(created_at) = HOUR(NOW())";
-
-    $sqlQuery_t1 = "SELECT ROUND(AVG(temperature),2) temp, ROUND(AVG(humidity),2) hum  FROM readings 
-    WHERE DATE(created_at) = CURDATE() 
-    AND HOUR(created_at) = HOUR(NOW())-1";
-
-    $sqlQuery_t2 = "SELECT ROUND(AVG(temperature),2) temp, ROUND(AVG(humidity),2) hum  FROM readings 
-    WHERE DATE(created_at) = CURDATE() 
-    AND HOUR(created_at) = HOUR(NOW())-2";
-
-    $sqlQuery_t3 = "SELECT ROUND(AVG(temperature),2) temp, ROUND(AVG(humidity),2) hum  FROM readings 
-    WHERE DATE(created_at) = CURDATE() 
-    AND HOUR(created_at) = HOUR(NOW())-3";
-
-    $sqlQuery_t4 = "SELECT ROUND(AVG(temperature),2) temp, ROUND(AVG(humidity),2) hum  FROM readings 
-    WHERE DATE(created_at) = CURDATE() 
-    AND HOUR(created_at) = HOUR(NOW())-4";
-
-    $sqlQuery_t5 = "SELECT ROUND(AVG(temperature),2) temp, ROUND(AVG(humidity),2) hum  FROM readings 
-    WHERE DATE(created_at) = CURDATE() 
-    AND HOUR(created_at) = HOUR(NOW())-5";
-
-    $sqlQuery_t6 = "SELECT ROUND(AVG(temperature),2) temp, ROUND(AVG(humidity),2) hum  FROM readings 
-    WHERE DATE(created_at) = CURDATE() 
-    AND HOUR(created_at) = HOUR(NOW())-6";
-    
-
-  /*  $sqlQuery_t1 = "SELECT AVG(temperature) avgTempNow FROM readings 
-    WHERE HOUR(created_at) = HOUR(NOW())";
-  */
-
-    $result_tA = mysqli_query($conn,$sqlQuery_tA);
-    $result_t1 = mysqli_query($conn,$sqlQuery_t1);
-    $result_t2 = mysqli_query($conn,$sqlQuery_t2);
-    $result_t3 = mysqli_query($conn,$sqlQuery_t3);
-    $result_t4 = mysqli_query($conn,$sqlQuery_t4);
-    $result_t5 = mysqli_query($conn,$sqlQuery_t5);
-    $result_t6 = mysqli_query($conn,$sqlQuery_t6);
-
-    $data_th= [];
-
-    foreach ($result_t6 as $row) {
-        $data_th[] = $row;
-    }
-
-    foreach ($result_t5 as $row) {
-        $data_th[] = $row;
-    }
-
-    foreach ($result_t4 as $row) {
-        $data_th[] = $row;
-    }
-
-    foreach ($result_t3 as $row) {
-        $data_th[] = $row;
-    }
-
-    foreach ($result_t2 as $row) {
-        $data_th[] = $row;
-    }
-
-    foreach ($result_t1 as $row) {
-        $data_th[] = $row;
-    }
-
-    foreach ($result_tA as $row) {
-        $data_th[] = $row;
+    $results = array();
+    for ($i = 7; $i >= 1; $i--) {
+          $hour_diff = $i - 1;
+         $sql_query = "SELECT ROUND(AVG(temperature),2) temp, ROUND(AVG(humidity),2) hum FROM readings 
+          WHERE DATE(created_at) = CURDATE() 
+          AND HOUR(created_at) = HOUR(NOW())-$hour_diff";
+         $result = mysqli_query($conn, $sql_query);
+         $data_th[] = mysqli_fetch_assoc($result);
     }
 
     mysqli_close($conn);
 
     echo json_encode($data_th);
+
 ?>

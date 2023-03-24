@@ -176,8 +176,6 @@ function getData(){
         document.getElementById("current_max_hum_time").innerHTML = max_hum_time;
 
 
-        
-
 
         
 
