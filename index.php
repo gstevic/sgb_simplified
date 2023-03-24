@@ -37,15 +37,13 @@
           <ul class="list-unstyled mt-3 mb-1 hum_title" >
             <li>VLAŽNOST (<span id="avg_hum_diffrence"></span>%)</li>
           </ul>  
-            <h1 class="card-title pricing-card-title hum_color">
-                <i class="fa-solid fa-droplet"></i>
-                <span id="current_avg_hum"></span>%</h1>
+            <h1 class="card-title pricing-card-title hum_color" id="current_avg_hum"></h1>
             <ul class="list-unstyled mt-3 mb-1">
             <!-- <li class="sub_text">Podaci od prije 1 min i 27 sek </li> -->
           </ul>  
 
           <ul class="list-unstyled mt-3 mb-1 gray_title" >
-            <li>PROSJEK ZA POSLEDNJIH 6 SATI</li>
+            <li>PROSJEK ZA POSLEDNJIH 7 SATI</li>
           </ul> 
 
           <canvas id="chartJSMixedDB"></canvas>
@@ -128,7 +126,7 @@
             <ul class="list-unstyled mt-3 mb-1 temp_title">
               <li>TEMPERATURA (<span id="t2_temp_diff"></span>°C)</li>
             </ul>
-              <h1 class="card-title pricing-card-title temp_color" id="t2_temp">°C</h1>
+              <h1 class="card-title pricing-card-title temp_color" id="t2_temp"></h1>
             <ul class="list-unstyled mt-3 mb-1 hum_title">
               <li>VLAŽNOST (<span id="t2_hum_diff"></span>%)</li>
             </ul>  
@@ -175,9 +173,19 @@
     <?php
           //  require_once("includes/lib.php");
     ?>
-    <script src="assets/js/sgb-core-0101.js"></script>
+    <script src="assets/js/sgb-core-0102.js"></script>
      <!-- Libraries end -->
 <script>  
+
+const options = { 
+ // year: 'numeric', 
+ // month: 'short', 
+ // day: 'numeric', 
+  hour: 'numeric', 
+ // minute: 'numeric', 
+ // second: 'numeric', 
+  hour12: false 
+};
 
   const now = new Date();
   const sixHoursAgo = new Date(now.getTime() - (6 * 60 * 60 * 1000));
@@ -187,17 +195,6 @@
   const twoHoursAgo = new Date(now.getTime() - (2 * 60 * 60 * 1000));
   const oneHourAgo = new Date(now.getTime() - (1 * 60 * 60 * 1000));
   const nowHour = new Date(now.getTime());
-
-
-  const options = { 
- // year: 'numeric', 
- // month: 'short', 
- // day: 'numeric', 
-  hour: 'numeric', 
- // minute: 'numeric', 
- // second: 'numeric', 
-  hour12: false 
-};
 
 
  // console.log(`Current time: ${now.toLocaleString()}`);
@@ -223,7 +220,6 @@
   hourLabels.push(sixH+'h', fiveH+'h', fourH+'h', threeH+'h', twoH+'h', oneH+'h', nowH+'h');
 
   //console.log(hourLabels)
-
 
 
 //Mixed Chart - php data begin
