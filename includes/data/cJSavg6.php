@@ -7,7 +7,8 @@
     for ($i = 7; $i >= 1; $i--) {
           $hour_diff = $i - 1;
          $sql_query = "SELECT ROUND(AVG(temperature),2) temp, ROUND(AVG(humidity),2) hum FROM readings 
-          WHERE HOUR(created_at) = HOUR(NOW())-$hour_diff";
+          WHERE DATE(created_at) = CURDATE() 
+              AND HOUR(created_at) = HOUR(NOW())-$hour_diff";
          $result = mysqli_query($conn, $sql_query);
          $data_th[] = mysqli_fetch_assoc($result);
     }
