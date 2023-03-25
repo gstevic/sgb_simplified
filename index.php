@@ -60,30 +60,39 @@
             <h4 class="my-0 font-weight-normal"><i class="fa-solid fa-down-left-and-up-right-to-center"></i> Dnevni min/maks</h4>
           </div>
           <div class="card-body">
+
+          <!-- Min temperature start -->
           <ul class="list-unstyled mt-3 mb-1 temp_title">
-            <li>Min. Temperatura u <span id="current_min_temp_time"></span> na <span id="current_min_temp_sensor"></span></li>
+            <li>Min. temperatura u <span id="current_min_temp_time"></span> na <span id="current_min_temp_sensor"></span></li>
           </ul>
           <h4 class="card-title pricing-card-title temp_color">         
-          <i class="fa-solid fa-temperature-arrow-down"></i>
-            <span id="current_min_temp"></span>°C</h4>
-          <ul class="list-unstyled mt-3 mb-1 hum_title">
-            <li>Min. vlažnost u <span id="current_min_hum_time"></span> na <span id="current_min_hum_sensor"></span></li>
-          </ul>  
-          <h4 class="card-title pricing-card-title hum_color">
-                <i class="fa-solid fa-droplet"></i>
-                <span id="current_min_hum"></span>%</h4>
-                <ul class="list-unstyled mt-3 mb-1 temp_title">
-            <li>Maks. Temperatura u <span id="current_max_temp_time"></span> na <span id="current_max_temp_sensor"></span></li>
+            <i class="fa-solid fa-temperature-arrow-down"></i>
+            <span id="current_min_temp"></span>°C
+          </h4>
+          <!-- Min temperature end -->
+          <!-- Max temperature start -->
+                    <ul class="list-unstyled mt-3 mb-1 temp_title">
+            <li>Maks. temperatura u <span id="current_max_temp_time"></span> na <span id="current_max_temp_sensor"></span></li>
           </ul>
-          <h4 class="card-title pricing-card-title temp_color">         
-          <i class="fa-solid fa-temperature-arrow-up"></i>
-            <span id="current_max_temp"></span>°C</h4>
+          <h4 class="card-title pricing-card-title temp_color">
+          <i class="fa-solid fa-temperature-arrow-up"></i><span id="current_max_temp"></span>°C
+          </h4>
+           <!-- Max temperature end -->
+          <!-- Min humidity start -->
           <ul class="list-unstyled mt-3 mb-1 hum_title">
-            <li>Maks. vlažnost u <span id="current_max_hum_time"></span> na <span id="current_max_hum_sensor"></span></li>
+            <li>Min. rel. vlažnost u <span id="current_min_hum_time"></span> na <span id="current_min_hum_sensor"></span></li>
           </ul>  
           <h4 class="card-title pricing-card-title hum_color">
-                <i class="fa-solid fa-droplet"></i>
-                <span id="current_max_hum"></span>%</h4>
+          <i class="fa-solid fa-droplet"></i><span id="current_min_hum"></span>%
+          </h4>
+          <!-- Min humidity end -->
+           <!-- Max humidity start -->
+          <ul class="list-unstyled mt-3 mb-1 hum_title">
+            <li>Maks. rel. vlažnost u <span id="current_max_hum_time"></span> na <span id="current_max_hum_sensor"></span></li>
+          </ul>  
+          <h4 class="card-title pricing-card-title hum_color"><i class="fa-solid fa-droplet"></i><span id="current_max_hum"></span>%
+          </h4>
+          <!-- Max humidity end -->
           </div>
         </div>
         
