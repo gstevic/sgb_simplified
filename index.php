@@ -200,7 +200,7 @@
 //Mixed Chart - php data begin
  $(document).ready(function () {
         getData();
-        showGraphMixedChart();
+        //showGraphMixedChart(); not neccessary to call here it is called from getData() function
     });
 
     const showGraphMixedChart = () => {
