@@ -5,7 +5,7 @@
  <title>SGB</title>
   </head>
 
-  <body onload="getData()">
+  <body>
 
   <!-- Top menu - header_menu start -->
   <?php
@@ -45,8 +45,9 @@
           <ul class="list-unstyled mt-3 mb-1 gray_title" >
             <li>PROSJEK ZA POSLEDNJIH 7 SATI</li>
           </ul> 
-
-          <canvas id="chartJSMixedDB"></canvas>
+          <div id="graph">
+            <canvas id="chartJSMixedDB"></canvas>
+          </div>
 
              <a class="btn btn-lg btn-block btn-outline-primary" href="avg.php" role="button">Detaljnije</a> 
           </div>
@@ -182,57 +183,23 @@
     <?php
           //  require_once("includes/lib.php");
     ?>
-    <script src="assets/js/sgb-core-0102.js"></script>
+    <script src="assets/js/sgb-core-0103.js"></script>
      <!-- Libraries end -->
 <script>  
 
-const options = { 
- // year: 'numeric', 
- // month: 'short', 
- // day: 'numeric', 
-  hour: 'numeric', 
- // minute: 'numeric', 
- // second: 'numeric', 
-  hour12: false 
-};
 
-  const now = new Date();
-  const sixHoursAgo = new Date(now.getTime() - (6 * 60 * 60 * 1000));
-  const fiveHoursAgo = new Date(now.getTime() - (5 * 60 * 60 * 1000));
-  const fourHoursAgo = new Date(now.getTime() - (4 * 60 * 60 * 1000));
-  const threeHoursAgo = new Date(now.getTime() - (3 * 60 * 60 * 1000));
-  const twoHoursAgo = new Date(now.getTime() - (2 * 60 * 60 * 1000));
-  const oneHourAgo = new Date(now.getTime() - (1 * 60 * 60 * 1000));
-  const nowHour = new Date(now.getTime());
-
-
- // console.log(`Current time: ${now.toLocaleString()}`);
- // console.log(`Six hours ago: ${sixHoursAgo.toLocaleString('sr-SP', options)}`);
- // console.log(`Six hours ago: ${fiveHoursAgo.toLocaleString('sr-SP', options)}`);
- // console.log(`Six hours ago: ${fourHoursAgo.toLocaleString('sr-SP', options)}`);
- // console.log(`Six hours ago: ${threeHoursAgo.toLocaleString('sr-SP', options)}`);
- // console.log(`Six hours ago: ${twoHoursAgo.toLocaleString('sr-SP', options)}`);
- // console.log(`Six hours ago: ${oneHourAgo.toLocaleString('sr-SP', options)}`);
- // console.log(`Six hours ago: ${nowHour.toLocaleString('sr-SP', options)}`);
-
-  sixH = sixHoursAgo.toLocaleString('sr-SP', options);
-  fiveH = fiveHoursAgo.toLocaleString('sr-SP', options);
-  fourH = fourHoursAgo.toLocaleString('sr-SP', options);
-  threeH = threeHoursAgo.toLocaleString('sr-SP', options);
-  twoH = twoHoursAgo.toLocaleString('sr-SP', options);
-  oneH = oneHourAgo.toLocaleString('sr-SP', options);
-  nowH = nowHour.toLocaleString('sr-SP', options);
-
-
-  var hourLabels = [];
-
-  hourLabels.push(sixH+'h', fiveH+'h', fourH+'h', threeH+'h', twoH+'h', oneH+'h', nowH+'h');
-
-  //console.log(hourLabels)
+    //Calculates the last 6 hours from the current hour, for the ChartJS labels # start
+      const options = { hour: 'numeric', hour12: false };
+      const hourLabels = Array.from({ length: 7 }, (_, i) =>
+      new Date(Date.now() - (i * 60 * 60 * 1000)).toLocaleString('sr-SP', options) + 'h'
+      ).reverse();
+      //console.log(hourLabels);
+    //Calculates the last 6 hours from the current hour, for the ChartJS labels # end
 
 
 //Mixed Chart - php data begin
  $(document).ready(function () {
+        getData();
         showGraphMixedChart();
     });
 
@@ -297,7 +264,7 @@ const options = {
  </script>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   </body>
