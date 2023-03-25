@@ -75,7 +75,7 @@
             <li>Maks. temperatura u <span id="current_max_temp_time"></span> na <span id="current_max_temp_sensor"></span></li>
           </ul>
           <h4 class="card-title pricing-card-title temp_color">
-          <i class="fa-solid fa-temperature-arrow-up"></i><span id="current_max_temp"></span>°C
+          <i class="fa-solid fa-temperature-arrow-up"></i> <span id="current_max_temp"></span>°C
           </h4>
            <!-- Max temperature end -->
           <!-- Min humidity start -->
@@ -83,14 +83,14 @@
             <li>Min. rel. vlažnost u <span id="current_min_hum_time"></span> na <span id="current_min_hum_sensor"></span></li>
           </ul>  
           <h4 class="card-title pricing-card-title hum_color">
-          <i class="fa-solid fa-droplet"></i><span id="current_min_hum"></span>%
+          <i class="fa-solid fa-droplet"></i> <span id="current_min_hum"></span>%
           </h4>
           <!-- Min humidity end -->
            <!-- Max humidity start -->
           <ul class="list-unstyled mt-3 mb-1 hum_title">
             <li>Maks. rel. vlažnost u <span id="current_max_hum_time"></span> na <span id="current_max_hum_sensor"></span></li>
           </ul>  
-          <h4 class="card-title pricing-card-title hum_color"><i class="fa-solid fa-droplet"></i><span id="current_max_hum"></span>%
+          <h4 class="card-title pricing-card-title hum_color"><i class="fa-solid fa-droplet"></i> <span id="current_max_hum"></span>%
           </h4>
           <!-- Max humidity end -->
           </div>
