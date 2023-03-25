@@ -65,71 +65,12 @@
 
 const now = new Date();
 
-/*
-const tt24 = new Date(now.getTime() - (24 * 60 * 60 * 1000));
-const tt23 = new Date(now.getTime() - (23 * 60 * 60 * 1000));
-const tt22 = new Date(now.getTime() - (22 * 60 * 60 * 1000));
-const tt21 = new Date(now.getTime() - (21 * 60 * 60 * 1000));
-const tt20 = new Date(now.getTime() - (20 * 60 * 60 * 1000));
-const tt19 = new Date(now.getTime() - (19 * 60 * 60 * 1000));
-const tt18 = new Date(now.getTime() - (18 * 60 * 60 * 1000));
-const tt17 = new Date(now.getTime() - (17 * 60 * 60 * 1000));
-const tt16 = new Date(now.getTime() - (16 * 60 * 60 * 1000));
-const tt15 = new Date(now.getTime() - (15 * 60 * 60 * 1000));
-const tt14 = new Date(now.getTime() - (14 * 60 * 60 * 1000));
-const tt13 = new Date(now.getTime() - (13 * 60 * 60 * 1000));
-const tt12 = new Date(now.getTime() - (12 * 60 * 60 * 1000));
-const tt11 = new Date(now.getTime() - (11 * 60 * 60 * 1000));
-const tt10 = new Date(now.getTime() - (10 * 60 * 60 * 1000));
-const tt9 = new Date(now.getTime() - (9 * 60 * 60 * 1000));
-const tt8 = new Date(now.getTime() - (8 * 60 * 60 * 1000));
-const tt7 = new Date(now.getTime() - (7 * 60 * 60 * 1000));
-const tt6 = new Date(now.getTime() - (6 * 60 * 60 * 1000));
-const tt5 = new Date(now.getTime() - (5 * 60 * 60 * 1000));
-const tt4 = new Date(now.getTime() - (4 * 60 * 60 * 1000));
-const tt3 = new Date(now.getTime() - (3 * 60 * 60 * 1000));
-const tt2 = new Date(now.getTime() - (2 * 60 * 60 * 1000));
-const tt1 = new Date(now.getTime() - (1 * 60 * 60 * 1000));
-const tt0 = new Date(now.getTime());
-*/
 
 const options = { 
-// year: 'numeric', 
-// month: 'short', 
-// day: 'numeric', 
-hour: 'numeric', 
-// minute: 'numeric', 
-// second: 'numeric', 
-hour12: false 
+  hour: 'numeric',  
+  hour12: false 
 };
 
-/*
-const t_tt24 = tt24.toLocaleString('sr-SP', options);
-const t_tt23 = tt23.toLocaleString('sr-SP', options);
-const t_tt22 = tt22.toLocaleString('sr-SP', options);
-const t_tt21 = tt21.toLocaleString('sr-SP', options);
-const t_tt20 = tt20.toLocaleString('sr-SP', options);
-const t_tt19 = tt19.toLocaleString('sr-SP', options);
-const t_tt18 = tt18.toLocaleString('sr-SP', options);
-const t_tt17 = tt17.toLocaleString('sr-SP', options);
-const t_tt16 = tt16.toLocaleString('sr-SP', options);
-const t_tt15 = tt15.toLocaleString('sr-SP', options);
-const t_tt14 = tt14.toLocaleString('sr-SP', options);
-const t_tt13 = tt13.toLocaleString('sr-SP', options);
-const t_tt12 = tt12.toLocaleString('sr-SP', options);
-const t_tt11 = tt11.toLocaleString('sr-SP', options);
-const t_tt10 = tt10.toLocaleString('sr-SP', options);
-const t_tt9 = tt9.toLocaleString('sr-SP', options);
-const t_tt8 = tt8.toLocaleString('sr-SP', options);
-const t_tt7 = tt7.toLocaleString('sr-SP', options);
-const t_tt6 = tt6.toLocaleString('sr-SP', options);
-const t_tt5 = tt5.toLocaleString('sr-SP', options);
-const t_tt4 = tt4.toLocaleString('sr-SP', options);
-const t_tt3 = tt3.toLocaleString('sr-SP', options);
-const t_tt2 = tt2.toLocaleString('sr-SP', options);
-const t_tt1 = tt1.toLocaleString('sr-SP', options);
-const t_tt0 = tt0.toLocaleString('sr-SP', options);
-*/
 
 
 //Creates an array with hour values for the ChartJS labels 
