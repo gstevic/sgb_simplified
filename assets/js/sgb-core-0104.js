@@ -118,6 +118,7 @@ function getData(){
         
         document.getElementById("t3_hum").innerHTML = '<i class="fa-solid fa-droplet"></i> '+t3_hum+'%';
 
+
         //Min Temp values data set
         if(isNaN(myArray[9])){
           min_temp = '-';
@@ -174,10 +175,7 @@ function getData(){
         document.getElementById("current_max_hum").innerHTML =  max_hum;
         document.getElementById("current_max_hum_sensor").innerHTML = max_hum_sensor;
         document.getElementById("current_max_hum_time").innerHTML = max_hum_time;
-
-
-
-        
+ 
 
         //current avg temp - calculation
         current_avg_temp = ((parseFloat(myArray[0])+parseFloat(myArray[3])+parseFloat(myArray[6]))/3).toFixed(2);
@@ -225,6 +223,78 @@ function getData(){
       //  document.getElementById("current_avg_temp").innerHTML = current_avg_temp;
        // document.getElementById("current_avg_hum").innerHTML = current_avg_hum;
 
+        /******************************************************/ 
+        /*****                   MOTORS              **********/
+        /**********************  START    *********************/ 
+
+        //m2 current data set
+        m2_status = parseInt(myArray[27]);
+        m2_time = formatDate(myArray[28]);
+        m2_command =parseInt(myArray[29]);
+        //t3 old
+        //t3_old_temp = parseFloat(myArray[25]).toFixed(1);
+        //t3_old_hum = parseFloat(myArray[26]).toFixed(1);
+       //temp diffrence start
+       //t3_temp_difference = t3_temp - t3_old_temp;
+        $("#status").text(m2_status);
+        //console.log('current_status:');
+        var current_status_m2 = $('#status').text();
+         console.log('current_status:'+current_status_m2);
+
+         $('#m2_button').prop('disabled', true);
+   
+         var range = $('.input-range')
+         document.getElementById("new-command").innerHTML = '';
+
+         range.on('input', function() {
+            //var current_state_m2 = value.html(this.value);
+            var new_command_M2 = this.value;
+            new_command_M2 = parseInt(new_command_M2);
+            current_status_m2 = parseInt(current_status_m2);
+            console.log('new command:'+new_command_M2);
+            if(current_status_m2 != new_command_M2){
+                if(new_command_M2 > current_status_m2){
+                document.getElementById("new-command").innerHTML = 'Nova komanda: OTVORI na '+new_command_M2+'cm';
+                }
+                else if(new_command_M2 < current_status_m2 && new_command_M2 > 0){
+                    document.getElementById("new-command").innerHTML = 'Nova komanda: ZATVORI na '+new_command_M2+'cm';
+                }
+                else if(new_command_M2 == 0){
+                document.getElementById("new-command").innerHTML = 'Nova komanda: ZATVORI!';
+                }
+            }
+            if(current_status_m2 == new_command_M2){
+                document.getElementById("new-command").innerHTML = 'Trenuto stanje motora: '+new_command_M2+'cm';
+                $('#m1_button').prop('disabled', true);
+            }
+            else{
+                $('#m1_button').prop('disabled', false);
+            }
+          });
+
+          if(m2_command != 1000){
+            //console.log('danger');
+            $('#m1_button').prop('disabled', false);
+            $('#m2').prop('disabled', true);
+            $('#m1_button').removeClass('btn-block btn-outline-primary').addClass('btn-block btn-danger');
+            $('#m1_button').attr('onclick', "m1Rollback()");
+            document.getElementById("m1_button").innerHTML = 'Otkaži komandu (20 sek)';
+          }else{
+            $('#m1_button').removeClass('btn-block btn-danger').addClass('btn-block btn-outline-primary');
+            $('#m1_button').attr('onclick', "m1Click()");
+            $('#m2').prop('disabled', false);
+            document.getElementById("m1_button").innerHTML = 'Izvrši komandu';
+          }
+
+
+        //document.getElementById("m2_time").innerHTML = m2_time;
+        $('#m1').val(m2_status);
+        //value.html(m2_status);
+
+
+
+
+
         //format date function
         function formatDate(dateTimeInput){
         const [dateValues, timeValues] = dateTimeInput.split(' ');
@@ -245,6 +315,7 @@ function getData(){
         return formatedTime;
         }
 
+        //    
         recreateChartJS6h();
         timeCalculation();
 
@@ -267,6 +338,8 @@ function getData(){
             var distance_t2 = now - t2_time;
             var distance_t3 = now - t3_time;
 
+            var distance_m2 = now - m2_time;
+
             var flag_ajax_call = 0;
 
      
@@ -287,6 +360,13 @@ function getData(){
           var hours_t3 = Math.floor((distance_t3 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
           var minutes_t3 = Math.floor((distance_t3 % (1000 * 60 * 60)) / (1000 * 60));
           var seconds_t3 = Math.floor((distance_t3 % (1000 * 60)) / 1000);
+
+
+          // Time calculations for days, hours, minutess and seconds - M2
+          var days_m2 = Math.floor(distance_m2 / (1000 * 60 * 60 * 24));
+          var hours_m2 = Math.floor((distance_m2 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes_m2 = Math.floor((distance_m2 % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds_m2 = Math.floor((distance_m2 % (1000 * 60)) / 1000);
 
   
 
@@ -426,6 +506,66 @@ function getData(){
       }
       }
        //COUNTER FOR t3 END
+
+
+      //COUNTER FOR m2 BEGIN
+      if(days_m2>0){
+        // Output the result in an element with id="demo"
+        document.getElementById("m2_time").innerHTML = days_m2 + "d " + hours_m2 + "h "+ minutes_m2 + "min " + seconds_m2 + "sek ";
+        $("#m2_temp").addClass("temp_color_wait");
+        $("#m2_hum").addClass("hum_color_wait");
+    }
+    else if(hours_m2>0){
+        document.getElementById("m2_time").innerHTML = hours_m2 + "h "+ minutes_m2 + "min " + seconds_m2 + "sek ";
+        $("#m2_temp").addClass("temp_color_wait");
+        $("#m2_hum").addClass("hum_color_wait");
+    }
+    else{
+    // Output the result in an element with id="demo"
+    if(minutes_m2<1){
+        document.getElementById("m2_time").innerHTML = " Motor se javio prije "+minutes_m2+" min " +seconds_m2+" sek";
+        $("#m2_temp").removeClass("temp_color_wait");
+        $("#m2_hum").removeClass("hum_color_wait");
+        if(m2_command != 1000){
+          //console.log('danger');
+          reverse_counter = 60 - seconds_m2;
+          document.getElementById("m1_button").innerHTML = 'Otkaži komandu ('+reverse_counter+' sek)';
+        }
+    }
+    else if(minutes_m2>=1 && minutes_m2 <= 2){
+        minutes_m2 = minutes_m2 - 1; 
+        if(m2_command != 1000){  
+          document.getElementById("m2_time").innerHTML = " <style>#m2_time{color:orange;}</style> Komanda se izvršava: " +minutes_m2+ " min " +seconds_m2+ " sek";
+        }
+        else{
+          document.getElementById("m2_time").innerHTML = " <style>#m2_time{color:orange;}</style> Provjera komande na motoru: " +minutes_m2+ " min " +seconds_m2+ " sek";
+        }
+        $("#m2_temp").addClass("temp_color_wait");
+        $("#m2_hum").addClass("hum_color_wait");
+      if(seconds_m2 == 10){
+      //refresh the data
+         getData();
+         //recreateChartJS6h();
+      }
+      if(seconds_m2 == 40){
+      //refresh the data
+        getData();
+        //recreateChartJS6h();
+      }
+      if(seconds_m2 == 59){
+      //refresh the data
+        getData();
+        //recreateChartJS6h();
+      }
+    }
+  else {
+      document.getElementById("m2_time").innerHTML = "<style>#m2_time{color:red; font-weight:600;}</style>  Nije na mreži:  " +minutes_m2 + "m " + seconds_m2 + "s";
+  }
+}
+   //COUNTER FOR m2 END
+
+
+
     } // end of if NaN
 
 
@@ -540,6 +680,48 @@ var barGraph2 = new Chart(graphTarget2, {
 }
 }
 //Mixed Chart - php data end
+
+function m1Click(){
+    console.log("M2 clicked");
+    current_status_m2 = $('#status').text();
+    //console.log(current_status_m2);
+    new_command_M2 = $('#m2').val();
+    motor = 'm1';
+    
+    final_command = new_command_M2 - current_status_m2;
+             if(current_status_m2 != new_command_M2){
+                if(new_command_M2 > current_status_m2){
+                    
+                    console.log("Otvori za "+final_command);
+                }
+                else if(new_command_M2 < current_status_m2){
+                    console.log("Zatvori za "+final_command);
+                }
+            }
+            //'set_motor.php??date="'+date+'"'
+            console.log('Final command for ajax'+final_command);
+            $.ajax({
+              type: "POST",
+              url: 'set_motor.php?m='+motor+'&c='+final_command+'&s='+new_command_M2,
+              success: function(data) {
+                //console.log(data);
+                getData();
+              }
+            });
+          }
+  
+  function m1Rollback(){
+    motor = 'm1';
+    console.log('Rollback activated motor'+motor);
+    $.ajax({
+      type: "POST",
+      url: 'rollback_motor.php?m='+motor,
+      success: function(data) {
+        //console.log(data);
+        getData();
+      }
+    });
+  }
 
 setInterval(() => {
   timeCalculation();

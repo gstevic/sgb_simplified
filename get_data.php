@@ -1,5 +1,5 @@
 <?php
-require('includes/inc_conn.php');
+require('includes/inc_conn.php'); //Script for db connect
 //********************************************* GET SENSOR DATA START *************************** */
 //GET Data for T1 sensor start
 $sql_t1 = "SELECT sensor, temperature, humidity, created_at from readings where sensor = 't1' order by created_at desc limit 1";
@@ -199,10 +199,34 @@ if (mysqli_query($conn, $sql_max_hum)) {
     $current_max_hum_sensor = '-';
 }
 }
-//GET max hum end
+
+
+//GET motor M1 status start
+$sql_m1_status = "SELECT command,state, executed_at  from motors where motor = 'm1'";
+
+if (mysqli_query($conn, $sql_max_hum)) {
+ $result = $conn->query($sql_m1_status);
+ if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    $current_command_m1 = $row["command"];
+    $current_state_m1 = $row["state"];
+    $current_time_m1 = $row["executed_at"];
+  }
+} else {
+  $current_state_m1 = '-';
+  $current_time_m1 = '-';
+  //$current_max_hum_sensor = '-';
+}
+}
+////GET motor M1 status end
+
 //********************************************* GET MIN/MAX MEASURMENTS FOR THE CURRENT DATE END *************************** */
 
-
+//Creates an array with values to be used in index.php page
+/*
+* ATTENTION: DO NOT CHANGE THE POSTION OF THE VALUES IN ARRAY, NEW VALUS ALWAYS MUST BE ADDED TO THE END
+*/
 $t_data = [$current_temp_t1, $current_hum_t1, $current_time_t1, 
 $current_temp_t2, $current_hum_t2, $current_time_t2, 
 $current_temp_t3, $current_hum_t3, $current_time_t3, 
@@ -210,8 +234,9 @@ $current_min_temp, $current_min_temp_time, $current_min_temp_sensor,
 $current_max_temp, $current_max_temp_time, $current_max_temp_sensor , 
 $current_min_hum, $current_min_hum_time, $current_min_hum_sensor, 
 $current_max_hum, $current_max_hum_time, $current_max_hum_sensor, 
-$old_temp_t1, $old_hum_t1, $old_temp_t2, $old_hum_t2, $old_temp_t3, $old_hum_t3];
+$old_temp_t1, $old_hum_t1, $old_temp_t2, $old_hum_t2, $old_temp_t3, $old_hum_t3,
+$current_state_m1, $current_time_m1, $current_command_m1];
 echo implode(", ", $t_data);
-require('includes/inc_disc.php');
+require('includes/inc_disc.php'); //Script for db disconnect
 ?>
 

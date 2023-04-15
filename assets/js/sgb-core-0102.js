@@ -245,7 +245,7 @@ function getData(){
         return formatedTime;
         }
 
-
+        recreateChartJS6h();
         timeCalculation();
 
         console.log("AJAX called");
@@ -316,15 +316,18 @@ function getData(){
             $("#t1_hum").addClass("hum_color_wait");
           if(seconds_t1 == 10){
           //refresh the data
-          getData();
+            getData();
+            //recreateChartJS6h();
           }
           if(seconds_t1 == 40){
           //refresh the data
-          getData();
+            getData();
+            //recreateChartJS6h();
           }
           if(seconds_t1 == 59){
           //refresh the data
-          getData();
+            getData();
+            //recreateChartJS6h();
           }
         }
       else {
@@ -359,15 +362,18 @@ function getData(){
             $("#t2_hum").addClass("hum_color_wait");
           if(seconds_t2 == 10){
           //refresh the data
-          getData();
+             getData();
+             //recreateChartJS6h();
           }
           if(seconds_t2 == 40){
           //refresh the data
-          getData();
+            getData();
+            //recreateChartJS6h();
           }
           if(seconds_t2 == 59){
           //refresh the data
-          getData();
+            getData();
+            //recreateChartJS6h();
           }
         }
       else {
@@ -437,6 +443,7 @@ function getData(){
                     // do work
                     //console.log("active - called ajax");
                     getData();
+                    //recreateChartJS6h();
                     break;
             }
         }
@@ -446,6 +453,19 @@ function getData(){
 
 
 
+  }
+
+  function recreateChartJS6h(){
+    //console.log("recreateChartJS6h() called");
+    var canvas = document.getElementById("chartJSMixedDB");
+    canvas.remove();
+    // Create a new canvas element and set its attributes
+    var newCanvas = document.createElement("canvas");
+    newCanvas.setAttribute("id", "chartJSMixedDB");
+    // Add the new canvas element to the DOM
+    var container = document.getElementById("graph");
+    container.appendChild(newCanvas);
+    showGraphMixedChart();
   }
 
 setInterval(() => {

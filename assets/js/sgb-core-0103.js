@@ -455,6 +455,7 @@ function getData(){
 
   }
 
+  //Recreates canvas for the ChartJS - to get the latest data
   function recreateChartJS6h(){
     //console.log("recreateChartJS6h() called");
     var canvas = document.getElementById("chartJSMixedDB");
@@ -467,6 +468,78 @@ function getData(){
     container.appendChild(newCanvas);
     showGraphMixedChart();
   }
+
+
+  //Mixed Chart - php data begin
+ $(document).ready(function () {
+    getData();
+    //showGraphMixedChart(); not neccessary to call here it is called from getData() function
+});
+
+const showGraphMixedChart = () => {
+    {
+      
+//Calculates the last 6 hours from the current hour, for the ChartJS labels # start
+  const options = { hour: 'numeric', hour12: false };
+  const hourLabels = Array.from({ length: 7 }, (_, i) =>
+  new Date(Date.now() - (i * 60 * 60 * 1000)).toLocaleString('sr-SP', options) + 'h'
+  ).reverse();
+  //console.log(hourLabels);
+//Calculates the last 6 hours from the current hour, for the ChartJS labels # end
+        $.post("includes/data/cJSavg6.php",function (data_avg)
+        {
+
+         // console.log(data_avg);
+          var temp = [];
+          var hum = [];
+
+          for (var i in data_avg) {
+            temp.push(data_avg[i].temp);
+            hum.push(data_avg[i].hum);
+          }
+          
+
+        //  console.log(temp);
+
+
+chartdataLines2 = { datasets: [{
+   label: 'Temperatura',
+   data: temp,
+   backgroundColor: '#ffa084',
+   borderColor: '#E86144',
+   hoverBackgroundColor: '#E86144',
+   hoverBorderColor: '#666666',
+   // this dataset is drawn below
+   order: 2
+}, {
+   label: 'Vlažnost',
+   data: hum,
+   type: 'line',
+   borderColor: '#6fc1fa',
+   backgroundColor: '#6fc1fa',
+   hoverBackgroundColor: '#0096FF',
+   hoverBorderColor: '#666666',
+   //lineTension: 0.2,
+   // this dataset is drawn on top
+   order: 1
+}],
+labels: hourLabels
+};
+
+var graphTarget2 = $("#chartJSMixedDB");
+
+var barGraph2 = new Chart(graphTarget2, {
+              type: 'bar',
+              data: chartdataLines2
+          });
+ //options: bezierCurve: true
+// console.log('here');
+
+});
+
+}
+}
+//Mixed Chart - php data end
 
 setInterval(() => {
   timeCalculation();
