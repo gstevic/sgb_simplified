@@ -37,7 +37,7 @@ if (mysqli_query($conn, $sql_m)) {
 echo $current_state =  $state + $command;
 
 
-if($command != '1000'){
+if($command != 1000){
     //echo 'running';
     $sql_u = "UPDATE motors SET command = 1000, state = $current_state, running = 0, executed_at = now() WHERE motor = '$motor' and api = '$api'";
 
