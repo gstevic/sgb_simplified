@@ -5,6 +5,8 @@
 
 require('../inc_conn.php');
 
+sleep(1);
+
 if(isset($_GET['s']) && isset($_GET['t']) && isset($_GET['h']) && isset($_GET['a'])){
     $sensor = $_GET['s'];
     $temp = $_GET['t'];
@@ -34,7 +36,6 @@ else {
         // Query failed to execute
         echo "Error: " . mysqli_error($conn);
     }
-
 
 ?>
 
