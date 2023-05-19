@@ -39,3 +39,21 @@ html {
 
 
 .sub_text { color:#ccc; }
+
+.input-range-m1 {
+  width: 100%;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 20px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: #ccc;
+  border: 1px solid #333;
+}
+
+
+.input-range-m2 {
+  width: 100%;
+}

@@ -173,7 +173,7 @@ require_once("includes/head.php");
 
         <div class="card mb-3 box-shadow">
           <div class="card-header">
-            <h4 class="my-0 font-weight-normal"><i class="fa-solid fa-microchip"></i> Motor 1 - Sjever</h4>
+            <h4 class="my-0 font-weight-normal"><i class="fa-solid fa-microchip"></i> Motor M1 - Sjever</h4>
           </div>
           <div class="card-body">
             <ul class="list-unstyled mt-3 mb-1 temp_title">
@@ -217,6 +217,7 @@ require_once("includes/head.php");
         </div>
 
 
+
       </div> <!-- Container 2 end -->
 
 
@@ -237,8 +238,6 @@ require_once("includes/head.php");
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Libraries end -->
-
-
 
 
 

@@ -5,7 +5,6 @@ function getData(){
       success: function(data) {
         //console.log("The data was successfully recieved");
         //console.log("Response: " + data);
-        //document.getElementById("value1").innerHTML = data;
         const myArray = data.split(", ");
 
 

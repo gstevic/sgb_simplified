@@ -350,6 +350,7 @@ function getData(){
 
 
         //document.getElementById("m2_time").innerHTML = m2_time;
+        $('#m1').val(m1_status);
         $('#m2').val(m2_status);
         //value.html(m2_status);
 
