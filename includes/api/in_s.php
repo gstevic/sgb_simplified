@@ -28,6 +28,7 @@ $sql_m = "INSERT INTO readings (id, sensor, temperature, humidity, created_at, u
 
 if (mysqli_query($conn, $sql_m)) {
     $result = $conn->query($sql_m);
+    echo '0';
 }
 else {
         // Query failed to execute
